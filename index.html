@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b1020" />
+  <title>PyQuest Battle — Learn Python by Leveling Up</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #070b16;
+      --bg-2: #0c1224;
+      --panel: rgba(15, 23, 42, 0.88);
+      --panel-2: rgba(20, 30, 54, 0.9);
+      --line: rgba(148, 163, 184, 0.18);
+      --text: #ecf4ff;
+      --muted: #93a4bd;
+      --accent: #8b5cf6;
+      --accent-2: #22d3ee;
+      --good: #34d399;
+      --warn: #fbbf24;
+      --bad: #fb7185;
+      --boss: #f97316;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 10%, rgba(139, 92, 246, .22), transparent 32%),
+        radial-gradient(circle at 85% 18%, rgba(34, 211, 238, .15), transparent 30%),
+        radial-gradient(circle at 50% 90%, rgba(52, 211, 153, .10), transparent 35%),
+        var(--bg);
+      font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      overflow-x: hidden;
+    }
+
+    button, textarea { font: inherit; }
+    button { -webkit-tap-highlight-color: transparent; }
+
+    .app-shell {
+      width: min(1180px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 18px 0 52px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 10px;
+      z-index: 50;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 14px;
+      align-items: center;
+…[97503 chars truncated — re-run with head/grep/tail for full output]…
+", () => {
+            if (submitted) return;
+            selections[qi] = oi;
+            [...list.children].forEach((b, index) => b.classList.toggle("selected", index === oi));
+          });
+          list.appendChild(btn);
+        });
+        mount.appendChild(wrap);
+      });
+      if (currentStage > 0) footerButtons.appendChild(button("← Lesson", "ghost-btn", () => { currentStage = 0; renderStage(); }));
+      footerButtons.appendChild(button("Check answers", "primary-btn", () => {
+        if (selections.some(v => v === null)) { toast("Choose an answer for every question first."); return; }
+        submitted = true;
+        let score = 0;
+        questions.forEach((q, qi) => {
+          const list = mount.children[qi].querySelector(".answer-list");
+          [...list.children].forEach((b, oi) => {
+            b.classList.remove("selected");
+            if (oi === q.answer) b.classList.add("correct");
+            else if (oi === selections[qi]) b.classList.add("wrong");
+          });
+          if (selections[qi] === q.answer) score++;
+        });
+        const needed = level.boss ? Math.ceil(questions.length * .8) : questions.length;
+        const passed = score >= needed;
+        const feedback = document.getElementById("quizFeedback");
+        feedback.className = `feedback show ${passed ? "good" : "bad"}`;
+        feedback.innerHTML = passed
+          ? `✅ ${questions.length > 1 ? `${score}/${questions.length}. ` : ""}${escapeHTML(questions[0].explain)} You cleared the quiz stage.`
+          : `Not quite yet — ${score}/${questions.length}. Review the highlighted answers, then try again.`;
+        quizPassed = passed;
+        if (passed) {
+          footerButtons.innerHTML = "";
+          footerButtons.appendChild(button("← Lesson", "ghost-btn", () => { currentStage = 0; renderStage(); }));
+          footerButtons.appendChild(button("Go to Code →", "primary-btn", () => { currentStage = 2; renderStage(); }));
+        } else {
+          footerButtons.innerHTML = "";
+          footerButtons.appendChild(button("Try Quiz Again", "primary-btn", () => renderQuiz(level)));
+        }
+      }));
+    }
+
+
+    function bossMarkup(world) {
+      if (world.id === "iron") return '<i class="boss-core"></i><i class="boss-part p1"></i><i class="boss-part p2"></i>';
+      if (world.id === "volcano") return '<i class="boss-core"></i><i class="boss-part p1"></i><i class="boss-part p2"></i>';
+      return '<i class="boss-core"></i><i class="boss-part p1"></i><i class="boss-part p2"></i><i class="boss-part p3"></i>';
+    }
+
+    function renderBossBattle(level) {
+      const questions = Array.isArray(level.quiz) ? level.quiz : [level.quiz];
+      const world = worldForLevel(currentLevel);
+      const conceptsMastered = world.concepts || [];
+      const damageNeeded = Math.max(1, questions.length - 1); // one mistake can be survived
+      if (!bossBattleState) bossBattleState = { q: 0, hp: damageNeeded, maxHp: damageNeeded, hits: 0, locked: false };
+      const state = bossBattleState;
+      if (state.q >= questions.length) {
+        const won = state.hp <= 0;
+        quizPassed = won;
+        stageBody.innerHTML = `<div class="stage-inner"><div class="battle-result"><div class="section-kicker">${won ? "Boss staggered" : "Boss survived"}</div><h3>${won ? "HP depleted — prepare the coding finisher!" : `${state.hp} HP remains`}</h3><p>${won ? `You landed ${state.hits} correct-answer attacks. Finish the coding challenge to defeat ${escapeHTML(world.boss)}.` : `You landed ${state.hits}/${state.maxHp} needed attacks. Bosses are intentionally hard — retry and trace each line carefully.`}</p>${won ? `<div class="mastered-list">${conceptsMastered.map(c=>`<span>✓ ${escapeHTML(c)}</span>`).join("")}</div>` : ""}</div></div>`;
+        footerButtons.innerHTML = "";
+        footerButtons.appendChild(button("← Lesson", "ghost-btn", () => { currentStage = 0; renderStage(); }));
+        if (won) footerButtons.appendChild(button("Coding Finisher →", "primary-btn", () => { currentStage = 2; renderStage(); }));
+        else footerButtons.appendChild(button("Retry Boss", "primary-btn", () => { bossBattleState = null; renderBossBattle(level); }));
+        if (won) burstConfetti(26);
+        return;
+      }
+      const q = questions[state.q];
+      stageBody.innerHTML = `<div class="stage-inner battle-shell">
+        <div class="section-kicker">Boss battle • correct answers deal damage</div>
+        <div class="battle-arena battle-${world.id}">
+          <div class="battle-fighter"><div class="battle-snake ${["evo-hatchling","evo-spark","evo-arc","evo-guardian"][Math.min(3,progress.completed.filter(i=>levels[i]?.boss).length)]}" id="battleSnake"><i class="bs-tail"></i><i class="bs-coil"></i><i class="bs-neck"></i><i class="bs-head"><b></b><b></b></i></div><div><b>${escapeHTML(document.getElementById("companionName")?.textContent || "Byte")}</b></div></div>
+          <div class="battle-fighter"><div class="boss-avatar boss-${world.id}" id="bossAvatar">${bossMarkup(world)}</div><div><b>${escapeHTML(world.boss)}</b></div><div class="boss-hp"><i id="bossHpBar" style="width:${(state.hp/state.maxHp)*100}%"></i></div><small>${state.hp} HP</small></div>
+          <i class="battle-projectile" id="battleProjectile"></i>
+        </div>
+        <div class="battle-meta"><span>Question ${state.q + 1}/${questions.length}</span><span>${state.hits}/${state.maxHp} attacks landed</span></div>
+        <div class="battle-question"><h3>${escapeHTML(q.question)}</h3><div class="answer-list" id="bossAnswers"></div><div class="feedback" id="bossFeedback"></div></div>
+      </div>`;
+      const list = document.getElementById("bossAnswers");
+      q.options.forEach((opt, oi) => {
+        const b = document.createElement("button");
+        b.className = "answer-btn";
+        b.textContent = opt;
+        b.addEventListener("click", () => answerBossQuestion(level, q, oi));
+        list.appendChild(b);
+      });
+      footerButtons.appendChild(button("← Lesson", "ghost-btn", () => { currentStage = 0; renderStage(); }));
+    }
+
+    function answerBossQuestion(level, q, choice) {
+      const state = bossBattleState;
+      if (!state || state.locked) return;
+      state.locked = true;
+      const list = document.getElementById("bossAnswers");
+      [...list.children].forEach((b, oi) => {
+        b.disabled = true;
+        if (oi === q.answer) b.classList.add("correct");
+        else if (oi === choice) b.classList.add("wrong");
+      });
+      const correct = choice === q.answer;
+      const feedback = document.getElementById("bossFeedback");
+      feedback.className = `feedback show ${correct ? "good" : "bad"}`;
+      if (correct) {
+        state.hp = Math.max(0, state.hp - 1);
+        state.hits += 1;
+        feedback.innerHTML = `<b>⚡ Correct reasoning.</b> ${escapeHTML(q.explain)} <b>Byte attacks ${escapeHTML(worldForLevel(currentLevel).boss)}!</b>`;
+        playBossAttack();
+      } else {
+        feedback.innerHTML = `<b>🛡️ Misconception spotted.</b> ${escapeHTML(q.explain)} Re-read the code trace — no damage this round.`;
+      }
+      const hp = document.getElementById("bossHpBar");
+      if (hp) hp.style.width = `${(state.hp/state.maxHp)*100}%`;
+      setTimeout(() => {
+        state.q += 1;
+        state.locked = false;
+        renderBossBattle(level);
+      }, correct ? 850 : 650);
+    }
+
+    function playBossAttack() {
+      const snake = document.getElementById("battleSnake");
+      const boss = document.getElementById("bossAvatar");
+      const projectile = document.getElementById("battleProjectile");
+      const hero = document.getElementById("questMascot");
+      snake?.classList.add("attack");
+      projectile?.classList.add("fly");
+      hero?.classList.add("celebrate");
+      setTimeout(() => boss?.classList.add("hit"), 260);
+      setTimeout(() => { snake?.classList.remove("attack"); boss?.classList.remove("hit"); projectile?.classList.remove("fly"); hero?.classList.remove("celebrate"); }, 700);
+    }
+
+    function renderCode(level) {
+      const code = level.code;
+      const draft = progress.drafts[currentLevel] ?? code.starter ?? "";
+      stageBody.innerHTML = `
+        <div class="stage-inner">
+          <div class="section-kicker">${level.boss ? "Boss coding challenge" : "Code challenge"}</div>
+          <h3>Now you write the Python</h3>
+          <p>${escapeHTML(code.prompt)}</p>
+          <div class="editor-shell">
+            <div class="editor-bar"><span>challenge.py</span><span class="editor-shortcut">Ctrl/⌘ + Enter to run</span><button class="editor-clear" id="clearCode" type="button">Clear</button></div>
+            <div class="editor-wrap">
+              <textarea class="code-editor" id="codeEditor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" aria-label="Python code editor"></textarea>
+              <button class="symbol-launch" id="symbolLaunch" title="Open symbol keypad" aria-label="Open symbol keypad">+</button>
+              <div class="symbol-pad" id="symbolPad"></div>
+            </div>
+          </div>
+          <div class="hint-box" id="hintBox">💡 ${escapeHTML(code.hint)}</div>
+          <div class="feedback" id="codeFeedback"></div>
+        </div>`;
+      const editor = document.getElementById("codeEditor");
+      editor.value = draft;
+      document.getElementById("clearCode").addEventListener("click", () => { editor.value = code.starter || ""; progress.drafts[currentLevel] = editor.value; saveProgress(); editor.focus(); toast("Editor reset"); });
+      editor.addEventListener("input", () => {
+        progress.drafts[currentLevel] = editor.value;
+        saveProgress();
+      });
+      editor.addEventListener("keydown", e => {
+        if (e.key === "Tab") {
+          e.preventDefault();
+          insertAtCursor(editor, "    ");
+        }
+        if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+          e.preventDefault();
+          checkCode(level, editor.value);
+        }
+      });
+      setupSymbols(editor);
+      footerButtons.appendChild(button("← Quiz", "ghost-btn", () => { currentStage = 1; renderStage(); }));
+      footerButtons.appendChild(button("Hint", "ghost-btn", () => document.getElementById("hintBox").classList.toggle("show")));
+      footerButtons.appendChild(button(isComplete(currentLevel) ? "Check again" : "Run & Check", "primary-btn", () => checkCode(level, editor.value)));
+    }
+
+    function setupSymbols(editor) {
+      const symbols = [
+        ['"', '"'], ["'", "'"], ['()', '()'], ['[]', '[]'], ['{}', '{}'], [':', ':'], ['=', '='],
+        ['==', '=='], ['>=', '>='], ['<=', '<='], ['!=', '!='], ['+', '+'], ['-', '-'], ['*', '*'],
+        ['/', '/'], ['_', '_'], [',', ','], ['.', '.'], ['#', '# '], ['↵', '\n'], ['⇥', '    ']
+      ];
+      const pad = document.getElementById("symbolPad");
+      symbols.forEach(([label, value]) => {
+        const b = document.createElement("button");
+        b.className = "symbol-btn";
+        b.type = "button";
+        b.textContent = label;
+        b.addEventListener("click", () => insertAtCursor(editor, value, ["()","[]","{}"].includes(value)));
+        pad.appendChild(b);
+      });
+      document.getElementById("symbolLaunch").addEventListener("click", () => pad.classList.toggle("show"));
+    }
+
+    function insertAtCursor(el, text, placeInside = false) {
+      const start = el.selectionStart;
+      const end = el.selectionEnd;
+      const before = el.value.slice(0, start);
+      const after = el.value.slice(end);
+      el.value = before + text + after;
+      const pos = start + text.length - (placeInside ? 1 : 0);
+      el.focus();
+      el.setSelectionRange(pos, pos);
+      el.dispatchEvent(new Event("input", { bubbles: true }));
+    }
+
+    function chapterTransitionMarkup(levelIndex) {
+      if (levelIndex === 9) return `<div class="chapter-transition"><small>World cleared • Iron Castle</small><h4>The throne forge falls!</h4><p>Byte absorbed the Golem’s rune energy. Next destination: <b>Ember Volcano</b>.</p><span class="evolution-name">Evolution unlocked • Spark Serpent</span></div>`;
+      if (levelIndex === 19) return `<div class="chapter-transition"><small>World cleared • Ember Volcano</small><h4>The crater path is open!</h4><p>Byte mastered the Dragon’s arc energy. Next destination: <b>Prism Citadel</b>.</p><span class="evolution-name">Evolution unlocked • Arc Serpent</span></div>`;
+      if (levelIndex === 29) return `<div class="chapter-transition final"><small>Final world cleared • Prism Citadel</small><h4>Python Guardian Form unlocked</h4><p>You defeated the Prism Hydra and completed all 30 beginner Python quests.</p><span class="evolution-name">Final evolution • Python Guardian Form</span></div>`;
+      return "";
+    }
+
+    function checkCode(level, source) {
+      const feedback = document.getElementById("codeFeedback");
+      const normalized = source.replace(/\r/g, "");
+      const results = level.code.checks.map(([label, fn]) => [label, fn(normalized)]);
+      const failed = results.filter(r => !r[1]);
+      if (failed.length === 0) {
+        codePassed = true;
+        feedback.className = "feedback show good";
+        feedback.innerHTML = `<div class="success-premium"><div class="success-icon">✓</div><div><small>QUEST COMPLETE</small><h4>${level.boss ? "Boss defeated" : "Excellent work"}</h4><p>+${level.boss ? 300 : 100} XP • ${Math.round(((progress.completed.length + (isComplete(currentLevel)?0:1))/levels.length)*100)}% course mastery</p></div></div><div class="expected-output"><b>Expected result</b><span>${escapeHTML(level.code.output)}</span></div>${level.boss ? chapterTransitionMarkup(currentLevel) : ""}`;
+        modalCard.classList.remove("celebrate");
+        void modalCard.offsetWidth;
+        modalCard.classList.add("celebrate");
+        burstConfetti(level.boss ? 34 : 18);
+        completeLevel(currentLevel);
+        footerButtons.innerHTML = "";
+        footerButtons.appendChild(button("← Quiz", "ghost-btn", () => { currentStage = 1; renderStage(); }));
+        if (currentLevel < levels.length - 1) footerButtons.appendChild(button("Next Level →", "primary-btn", () => { const next = currentLevel + 1; closeModal(); setTimeout(() => openLevel(next), 120); }));
+        else footerButtons.appendChild(button("Claim Guardian Form ✓", "primary-btn", () => { closeModal(); toast("🏆 Prism Hydra defeated — Python Guardian Form unlocked!"); }));
+      } else {
+        feedback.className = "feedback show bad";
+        feedback.innerHTML = `Not yet. Check these parts:<br>• ${failed.map(f => escapeHTML(f[0])).join("<br>• ")}<br><br>Your idea can still be close — adjust the code and try again.`;
+      }
+    }
+
+    function burstConfetti(count = 18) {
+      if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      const palette = ["#8b5cf6", "#22d3ee", "#34d399", "#fbbf24", "#f97316"];
+      const originX = window.innerWidth / 2;
+      const originY = Math.min(window.innerHeight * .38, 330);
+      for (let i = 0; i < count; i++) {
+        const piece = document.createElement("i");
+        piece.className = "confetti-piece";
+        piece.style.left = `${originX}px`;
+        piece.style.top = `${originY}px`;
+        piece.style.background = palette[i % palette.length];
+        piece.style.setProperty("--dx", `${(Math.random() - .5) * 430}px`);
+        piece.style.setProperty("--dy", `${110 + Math.random() * 270}px`);
+        piece.style.setProperty("--rot", `${(Math.random() - .5) * 900}deg`);
+        piece.style.animationDelay = `${Math.random() * 100}ms`;
+        document.body.appendChild(piece);
+        setTimeout(() => piece.remove(), 1200);
+      }
+    }
+
+    function completeLevel(i) {
+      if (!isComplete(i)) {
+        progress.completed.push(i);
+        progress.completed.sort((a,b) => a-b);
+        progress.xp += levels[i].boss ? 300 : 100;
+        progress.lastActive = new Date().toISOString().slice(0,10);
+        progress.unlocked = Math.min(levels.length, Math.max(progress.unlocked, i + 2));
+        saveProgress();
+        renderMap();
+        toast(levels[i].boss ? "🔥 Boss defeated! +300 XP • snake evolved!" : "✨ Level cleared! +100 XP");
+      }
+    }
+
+    function button(text, cls, onClick) {
+      const b = document.createElement("button");
+      b.className = cls;
+      b.textContent = text;
+      b.addEventListener("click", onClick);
+      return b;
+    }
+
+    function toast(msg) {
+      toastEl.textContent = msg;
+      toastEl.classList.add("show");
+      clearTimeout(toastEl._t);
+      toastEl._t = setTimeout(() => toastEl.classList.remove("show"), 2200);
+    }
+
+    function escapeHTML(value) {
+      return String(value).replace(/[&<>'"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[c]));
+    }
+
+    document.getElementById("continueQuest").addEventListener("click", () => {
+      const next = Math.max(0, Math.min(levels.length - 1, progress.completed.length));
+      openLevel(next);
+    });
+
+    document.getElementById("closeModal").addEventListener("click", closeModal);
+    modal.addEventListener("click", e => { if (e.target === modal) closeModal(); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape" && modal.classList.contains("show")) closeModal(); });
+    document.querySelectorAll(".stage-tab").forEach(tab => tab.addEventListener("click", () => {
+      const target = Number(tab.dataset.stage);
+      if (target === 0 || (target === 1 && lessonSeen) || (target === 2 && quizPassed)) {
+        currentStage = target;
+        renderStage();
+      } else {
+        toast(target === 1 ? "Finish the lesson first." : "Pass the quiz first.");
+      }
+    }));
+
+    document.getElementById("resetBtn").addEventListener("click", () => {
+      if (confirm("Reset all PyQuest progress on this device?")) {
+        progress = defaultProgress();
+        saveProgress();
+        renderMap();
+        toast("Progress reset.");
+      }
+    });
+
+    renderMap();
+  </script>
+</body>
+</html>
