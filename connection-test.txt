@@ -1,1 +1,0 @@
-PyQuest publishing connection verified.
