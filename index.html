@@ -59,8 +59,1391 @@
       grid-template-columns: auto 1fr auto;
       gap: 14px;
       align-items: center;
-…[97503 chars truncated — re-run with head/grep/tail for full output]…
-", () => {
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(7, 11, 22, .82);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 12px 40px rgba(0,0,0,.22);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: white;
+      font-family: "JetBrains Mono", monospace;
+      font-weight: 800;
+      box-shadow: 0 10px 30px rgba(139, 92, 246, .35);
+    }
+
+    .brand strong { display: block; line-height: 1; }
+    .brand small { color: var(--muted); font-size: 11px; }
+
+    .xp-wrap { min-width: 0; }
+    .xp-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .xp-track {
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, .13);
+      overflow: hidden;
+    }
+    .xp-bar {
+      width: 0;
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      transition: width .35s ease;
+    }
+
+    .top-actions { display: flex; gap: 8px; }
+    .icon-btn, .ghost-btn, .primary-btn, .answer-btn, .symbol-btn {
+      border: 0;
+      color: var(--text);
+      cursor: pointer;
+      transition: transform .15s ease, opacity .15s ease, border-color .15s ease, background .15s ease;
+    }
+    .icon-btn:active, .ghost-btn:active, .primary-btn:active, .answer-btn:active, .symbol-btn:active { transform: scale(.98); }
+
+    .icon-btn {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: rgba(148, 163, 184, .10);
+      border: 1px solid var(--line);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 24px;
+      align-items: center;
+      padding: 58px 8px 34px;
+    }
+    .hero h1 {
+      margin: 10px 0 14px;
+      font-size: clamp(38px, 7vw, 76px);
+      line-height: .97;
+      letter-spacing: -0.05em;
+      max-width: 780px;
+    }
+    .gradient-text {
+      background: linear-gradient(90deg, #c4b5fd, #67e8f9 55%, #6ee7b7);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero p {
+      color: var(--muted);
+      font-size: clamp(16px, 2vw, 19px);
+      line-height: 1.65;
+      max-width: 650px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      border: 1px solid rgba(139, 92, 246, .35);
+      background: rgba(139, 92, 246, .10);
+      color: #d8ccff;
+    }
+
+    .hero-card {
+      padding: 22px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(20, 30, 54, .86), rgba(8, 13, 27, .92));
+      box-shadow: var(--shadow);
+      transform: rotate(1.2deg);
+    }
+    .terminal-dots { display: flex; gap: 6px; margin-bottom: 16px; }
+    .terminal-dots i { width: 9px; height: 9px; border-radius: 50%; background: #475569; }
+    .terminal-dots i:nth-child(1) { background: #fb7185; }
+    .terminal-dots i:nth-child(2) { background: #fbbf24; }
+    .terminal-dots i:nth-child(3) { background: #34d399; }
+    .terminal-code {
+      font-family: "JetBrains Mono", monospace;
+      font-size: clamp(13px, 2vw, 16px);
+      line-height: 1.8;
+      color: #dbeafe;
+      white-space: pre-wrap;
+    }
+    .c-purple { color: #c4b5fd; }
+    .c-cyan { color: #67e8f9; }
+    .c-green { color: #6ee7b7; }
+    .c-yellow { color: #fde68a; }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .sidebar, .course-panel, .modal-card {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 84px;
+      padding: 18px;
+    }
+    .profile-card {
+      padding: 16px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(139,92,246,.13), rgba(34,211,238,.07));
+      border: 1px solid rgba(139,92,246,.18);
+      margin-bottom: 14px;
+    }
+    .profile-card strong { font-size: 18px; }
+    .profile-card p { margin: 6px 0 0; color: var(--muted); font-size: 13px; }
+    .stat-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin: 12px 0 18px;
+    }
+    .stat {
+      padding: 12px;
+      border-radius: 14px;
+      background: rgba(148,163,184,.07);
+      border: 1px solid var(--line);
+    }
+    .stat b { display: block; font-size: 20px; }
+    .stat span { color: var(--muted); font-size: 11px; }
+
+    .sidebar-title { margin: 18px 0 10px; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+    .sidebar-tip { font-size: 13px; line-height: 1.55; color: #cbd5e1; }
+
+    .course-panel { padding: 20px; }
+    .course-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .course-head h2 { margin: 0 0 5px; font-size: 26px; }
+    .course-head p { margin: 0; color: var(--muted); font-size: 13px; }
+    .legend { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+    .legend span { font-size: 11px; color: var(--muted); }
+
+    .level-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .level-card {
+      position: relative;
+      min-height: 126px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(30,41,59,.55), rgba(15,23,42,.75));
+      cursor: pointer;
+      overflow: hidden;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+    .level-card:hover:not(.locked) { transform: translateY(-3px); border-color: rgba(103,232,249,.45); }
+    .level-card.locked { opacity: .45; cursor: not-allowed; filter: saturate(.6); }
+    .level-card.complete { border-color: rgba(52,211,153,.28); }
+    .level-card.current { border-color: rgba(139,92,246,.55); box-shadow: inset 0 0 0 1px rgba(139,92,246,.16); }
+    .level-card.boss { background: linear-gradient(160deg, rgba(249,115,22,.15), rgba(127,29,29,.08), rgba(15,23,42,.75)); }
+    .level-card.boss:not(.locked) { border-color: rgba(249,115,22,.38); }
+    .level-num {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      background: rgba(148,163,184,.11);
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .boss .level-num { background: rgba(249,115,22,.16); color: #fdba74; }
+    .level-card h3 { font-size: 14px; margin: 0 0 6px; }
+    .level-card p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.4; }
+    .level-state { position: absolute; top: 12px; right: 12px; font-size: 13px; }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      place-items: center;
+      padding: 16px;
+      background: rgba(2, 6, 23, .78);
+      backdrop-filter: blur(8px);
+    }
+    .modal.show { display: grid; }
+    .modal-card {
+      width: min(900px, 100%);
+      max-height: min(92vh, 900px);
+      overflow: hidden;
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      background: #0a1020;
+    }
+    .modal-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 17px 20px;
+      border-bottom: 1px solid var(--line);
+      gap: 12px;
+    }
+    .modal-title-wrap { min-width: 0; }
+    .modal-title-wrap small { color: var(--muted); }
+    .modal-title-wrap h2 { margin: 2px 0 0; font-size: 22px; }
+    .stage-tabs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-bottom: 1px solid var(--line);
+    }
+    .stage-tab {
+      position: relative;
+      padding: 13px 8px;
+      color: var(--muted);
+      background: transparent;
+      border: 0;
+      font-weight: 700;
+      font-size: 12px;
+    }
+    .stage-tab.active { color: white; }
+    .stage-tab.active::after {
+      content: "";
+      position: absolute;
+      left: 18%; right: 18%; bottom: -1px;
+      height: 3px;
+      border-radius: 10px 10px 0 0;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    }
+    .stage-tab.done::before { content: "✓ "; color: var(--good); }
+
+    .stage-body {
+      overflow: auto;
+      padding: 22px;
+    }
+    .stage-inner { max-width: 760px; margin: 0 auto; }
+    .section-kicker { color: #a78bfa; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; font-weight: 700; }
+    .stage-inner h3 { font-size: clamp(24px, 4vw, 34px); margin: 6px 0 12px; letter-spacing: -0.025em; }
+    .stage-inner p, .stage-inner li { color: #c7d2e4; line-height: 1.7; }
+    .stage-inner ul { padding-left: 22px; }
+    .lesson-card {
+      margin: 18px 0;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(148,163,184,.06);
+    }
+    .code-block {
+      position: relative;
+      margin: 16px 0;
+      padding: 17px;
+      border-radius: 16px;
+      background: #050915;
+      border: 1px solid rgba(103,232,249,.14);
+      color: #dbeafe;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 13px;
+      white-space: pre-wrap;
+      overflow-x: auto;
+    }
+    .mini-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-right: 6px;
+      padding: 6px 9px;
+      border-radius: 999px;
+      background: rgba(52,211,153,.08);
+      border: 1px solid rgba(52,211,153,.18);
+      color: #a7f3d0;
+      font-size: 11px;
+    }
+
+    .answer-list { display: grid; gap: 10px; margin-top: 18px; }
+    .answer-btn {
+      width: 100%;
+      text-align: left;
+      padding: 14px 15px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(148,163,184,.06);
+      color: #dbeafe;
+    }
+    .answer-btn:hover { border-color: rgba(103,232,249,.35); }
+    .answer-btn.selected { border-color: rgba(139,92,246,.65); background: rgba(139,92,246,.11); }
+    .answer-btn.correct { border-color: rgba(52,211,153,.6); background: rgba(52,211,153,.09); }
+    .answer-btn.wrong { border-color: rgba(251,113,133,.6); background: rgba(251,113,133,.08); }
+
+    .boss-questions { display: grid; gap: 20px; }
+    .boss-question { padding-bottom: 18px; border-bottom: 1px solid var(--line); }
+    .boss-question:last-child { border-bottom: 0; }
+
+    .editor-shell { margin-top: 18px; position: relative; }
+    .editor-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      background: #070b16;
+      border: 1px solid var(--line);
+      border-bottom: 0;
+      border-radius: 16px 16px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .editor-wrap { position: relative; }
+    textarea.code-editor {
+      width: 100%;
+      min-height: 210px;
+      resize: vertical;
+      border: 1px solid var(--line);
+      outline: none;
+      border-radius: 0 0 16px 16px;
+      padding: 16px 16px 72px;
+      background: #030712;
+      color: #e0f2fe;
+      caret-color: #67e8f9;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 14px;
+      line-height: 1.65;
+      tab-size: 4;
+    }
+    textarea.code-editor:focus { border-color: rgba(103,232,249,.45); box-shadow: 0 0 0 3px rgba(34,211,238,.07); }
+
+    .symbol-launch {
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+      width: 42px;
+      height: 42px;
+      border: 0;
+      border-radius: 13px;
+      background: linear-gradient(135deg, var(--accent), #6366f1);
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 12px 30px rgba(99,102,241,.35);
+    }
+    .symbol-pad {
+      display: none;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 6px;
+      position: absolute;
+      right: 10px;
+      bottom: 62px;
+      width: min(420px, calc(100% - 20px));
+      padding: 10px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(10,16,32,.98);
+      box-shadow: 0 20px 50px rgba(0,0,0,.45);
+      z-index: 8;
+    }
+    .symbol-pad.show { display: grid; }
+    .symbol-btn {
+      min-height: 38px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: rgba(148,163,184,.08);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 13px;
+    }
+    .symbol-btn:hover { background: rgba(139,92,246,.15); }
+
+    .hint-box, .feedback {
+      margin-top: 14px;
+      padding: 13px 14px;
+      border-radius: 14px;
+      font-size: 13px;
+      line-height: 1.55;
+      border: 1px solid var(--line);
+      display: none;
+    }
+    .hint-box.show { display: block; background: rgba(251,191,36,.07); border-color: rgba(251,191,36,.22); color: #fde68a; }
+    .feedback.show { display: block; }
+    .feedback.good { background: rgba(52,211,153,.08); border-color: rgba(52,211,153,.25); color: #bbf7d0; }
+    .feedback.bad { background: rgba(251,113,133,.08); border-color: rgba(251,113,133,.24); color: #fecdd3; }
+
+    .modal-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 20px;
+      border-top: 1px solid var(--line);
+      background: rgba(7,11,22,.86);
+    }
+    .modal-foot-left { color: var(--muted); font-size: 12px; }
+    .btn-row { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+    .ghost-btn, .primary-btn {
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 13px;
+    }
+    .ghost-btn { background: rgba(148,163,184,.08); border: 1px solid var(--line); }
+    .primary-btn { background: linear-gradient(135deg, var(--accent), #6366f1); box-shadow: 0 10px 24px rgba(99,102,241,.24); }
+    .primary-btn:disabled, .ghost-btn:disabled { opacity: .4; cursor: not-allowed; }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      z-index: 200;
+      transform: translate(-50%, 20px);
+      opacity: 0;
+      pointer-events: none;
+      padding: 12px 16px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(10,16,32,.96);
+      box-shadow: var(--shadow);
+      color: #e2e8f0;
+      font-size: 13px;
+      transition: .22s ease;
+    }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    .celebrate { animation: pop .45s ease; }
+    @keyframes pop { 0% { transform: scale(.98); } 55% { transform: scale(1.02); } 100% { transform: scale(1); } }
+
+
+    /* --- PyQuest game polish --- */
+    .hero-card { position: relative; overflow: hidden; }
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      right: -70px;
+      top: -70px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(34,211,238,.18), transparent 68%);
+      pointer-events: none;
+    }
+    .hero-preview-grid {
+      display: grid;
+      grid-template-columns: 1fr 128px;
+      gap: 14px;
+      align-items: center;
+    }
+    .companion-wrap { display:grid; justify-items:end; gap:7px; min-width:128px; }
+    .companion-evolution { display:flex; gap:6px; align-items:center; flex-wrap:wrap; justify-content:flex-end; font-size:10px; color:var(--muted); }
+    .companion-evolution b { color:#a5f3fc; }
+    .companion-evolution span { padding:3px 6px; border:1px solid rgba(34,211,238,.2); border-radius:999px; background:rgba(34,211,238,.07); }
+    .quest-mascot {
+      --growth:.82; --display-scale:var(--growth); --snake-a:#7c3aed; --snake-b:#22d3ee; --snake-c:#34d399;
+      position:relative;width:136px;height:126px;margin-left:auto;transform-origin:right center;
+      filter:drop-shadow(0 14px 28px rgba(34,211,238,.28));animation:mascotFloat 3.5s ease-in-out infinite;
+    }
+    .quest-mascot .snake-body{position:absolute;left:10px;top:36px;width:102px;height:72px;border:15px solid transparent;border-radius:50%;background:linear-gradient(#0d1529,#0d1529) padding-box,conic-gradient(from 25deg,var(--snake-a),var(--snake-b),var(--snake-c),#facc15,#fb7185,var(--snake-a)) border-box;transform:rotate(-8deg);box-shadow:0 0 30px rgba(34,211,238,.18)}
+    .quest-mascot .snake-body:before{content:"";position:absolute;width:62px;height:18px;left:-42px;bottom:-5px;border-radius:100% 15% 15% 100%;background:linear-gradient(90deg,#fb7185,#facc15,var(--snake-c));transform:rotate(20deg);clip-path:polygon(0 50%,100% 0,100% 100%)}
+    .quest-mascot .snake-body:after{content:"";position:absolute;inset:-10px;border-radius:50%;background:repeating-linear-gradient(110deg,rgba(255,255,255,.28) 0 3px,transparent 3px 12px);mask:linear-gradient(#000 0 0) padding-box;opacity:.35}
+    .quest-mascot .snake-neck{position:absolute;right:25px;top:29px;width:24px;height:54px;border-radius:999px;background:linear-gradient(180deg,var(--snake-b),var(--snake-a));transform:rotate(22deg);box-shadow:inset 6px 0 8px rgba(255,255,255,.12)}
+    .quest-mascot .snake-head{position:absolute;right:1px;top:8px;width:62px;height:47px;border-radius:52% 60% 46% 58%;transform:rotate(8deg);background:linear-gradient(135deg,#67e8f9 0%,#34d399 38%,#8b5cf6 100%);border:2px solid rgba(255,255,255,.28);box-shadow:inset 0 0 18px rgba(255,255,255,.14),0 0 28px rgba(52,211,153,.25)}
+    .quest-mascot .snake-head:after{content:"";position:absolute;right:-16px;top:29px;width:23px;height:3px;background:#fb7185;border-radius:99px;transform:rotate(5deg);box-shadow:10px -3px 0 -1px #fb7185,10px 3px 0 -1px #fb7185;animation:tongueFlick 2.4s ease-in-out infinite}
+    .quest-mascot .eye{position:absolute;top:11px;width:10px;height:10px;border-radius:50%;background:#fff;box-shadow:0 0 8px #fff}.quest-mascot .eye.e1{left:12px}.quest-mascot .eye.e2{right:12px}.quest-mascot .pupil{position:absolute;width:3px;height:7px;left:4px;top:2px;border-radius:50%;background:#111827}
+    .quest-mascot .code-orb{position:absolute;left:44px;top:59px;width:44px;height:44px;display:grid;place-items:center;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,#67e8f9 22%,#8b5cf6 65%,#111827);border:1px solid rgba(255,255,255,.35);box-shadow:0 0 30px rgba(34,211,238,.48);color:#07111f;font:800 12px "JetBrains Mono",monospace;animation:orbPulse 2s ease-in-out infinite}
+    @keyframes mascotFloat{0%,100%{transform:translateY(0) rotate(-2deg) scale(var(--display-scale))}50%{transform:translateY(-10px) rotate(2deg) scale(var(--display-scale))}}
+    @keyframes tongueFlick{0%,72%,100%{transform:scaleX(.15) rotate(5deg);transform-origin:left}82%{transform:scaleX(1) rotate(5deg);transform-origin:left}}
+    @keyframes orbPulse{50%{box-shadow:0 0 45px rgba(34,211,238,.72);transform:scale(1.07)}}
+
+    .quest-trail {
+      position: relative;
+      padding: 8px 0 2px;
+      isolation: isolate;
+    }
+    .quest-trail::before {
+      content: "";
+      position: absolute;
+      inset: 36px 5% 28px;
+      z-index: -1;
+      opacity: .28;
+      background-image: radial-gradient(circle, rgba(103,232,249,.75) 1.4px, transparent 1.6px);
+      background-size: 22px 22px;
+      mask-image: linear-gradient(to bottom, transparent, #000 8%, #000 92%, transparent);
+    }
+    .chapter-label {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 8px 0 0;
+      color: #c4b5fd;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .chapter-label::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+      background: linear-gradient(90deg, rgba(139,92,246,.45), transparent);
+    }
+    .level-card::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      background: linear-gradient(135deg, transparent 45%, rgba(34,211,238,.09), transparent 68%);
+      opacity: 0;
+      transition: opacity .2s ease;
+      pointer-events: none;
+    }
+    .level-card:hover:not(.locked)::before, .level-card.current::before { opacity: 1; }
+    .level-card.current { animation: currentPulse 2.6s ease-in-out infinite; }
+    @keyframes currentPulse { 0%,100% { box-shadow: inset 0 0 0 1px rgba(139,92,246,.16), 0 0 0 rgba(139,92,246,0); } 50% { box-shadow: inset 0 0 0 1px rgba(139,92,246,.22), 0 0 30px rgba(139,92,246,.14); } }
+    .level-card.boss:not(.locked) { transform-origin: center; }
+    .level-card.boss:hover:not(.locked) { transform: translateY(-4px) scale(1.015); }
+    .boss-crown {
+      position: absolute;
+      right: 12px;
+      bottom: 10px;
+      font-size: 18px;
+      filter: drop-shadow(0 0 10px rgba(249,115,22,.5));
+    }
+    .level-card:focus-visible, .answer-btn:focus-visible, .primary-btn:focus-visible, .ghost-btn:focus-visible, .symbol-btn:focus-visible, .icon-btn:focus-visible {
+      outline: 2px solid #67e8f9;
+      outline-offset: 3px;
+    }
+
+    .editor-shortcut {
+      color: #7dd3fc;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 10px;
+    }
+    .editor-shell:focus-within { filter: drop-shadow(0 12px 26px rgba(34,211,238,.08)); }
+    textarea.code-editor { transition: border-color .18s ease, box-shadow .18s ease; }
+    textarea.code-editor:focus { border-color: rgba(34,211,238,.48); box-shadow: inset 0 0 0 1px rgba(34,211,238,.08); }
+
+    .confetti-piece {
+      position: fixed;
+      z-index: 400;
+      width: 8px;
+      height: 12px;
+      border-radius: 2px;
+      pointer-events: none;
+      animation: confettiFall 900ms cubic-bezier(.2,.7,.2,1) forwards;
+    }
+    @keyframes confettiFall {
+      0% { transform: translate3d(0,0,0) rotate(0deg); opacity: 1; }
+      100% { transform: translate3d(var(--dx), var(--dy), 0) rotate(var(--rot)); opacity: 0; }
+    }
+
+
+    .battle-shell { display:grid; gap:16px; }
+    .battle-arena { position:relative; min-height:245px; display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:18px; padding:18px; overflow:hidden; border:1px solid rgba(249,115,22,.2); border-radius:20px; background:radial-gradient(circle at 50% 110%,rgba(79,70,229,.34),transparent 48%),linear-gradient(180deg,#10182d,#060a16); }
+    .battle-fighter { text-align:center; position:relative; z-index:2; }
+    .battle-snake { display:inline-grid; place-items:center; width:106px; height:106px; margin-bottom:8px; border-radius:38% 62% 52% 48%; background:radial-gradient(circle at 35% 30%,#ecfeff 0 5%,#22d3ee 9%,#8b5cf6 58%,#312e81); box-shadow:0 0 38px rgba(34,211,238,.35); font-size:52px; filter:drop-shadow(0 10px 20px rgba(34,211,238,.22)); }
+    .battle-snake.attack { animation: battleLunge .58s cubic-bezier(.2,.8,.3,1); }
+    .boss-avatar { display:inline-grid; place-items:center; width:118px; height:118px; margin-bottom:8px; border-radius:34% 49% 39% 53%; background:radial-gradient(circle at 35% 30%,#fed7aa,#f97316 33%,#991b1b 75%,#3f0b16); box-shadow:0 0 42px rgba(249,115,22,.32); font-size:54px; }
+    .boss-avatar.hit { animation: bossImpact .48s ease; }
+    .boss-hp { width:min(230px,88%); height:12px; margin:9px auto 4px; overflow:hidden; border-radius:999px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.08); }
+    .boss-hp > i { display:block; width:100%; height:100%; background:linear-gradient(90deg,#fb7185,#f97316,#fbbf24); transition:width .28s ease; }
+    .battle-projectile { position:absolute; left:36%; top:45%; width:24px; height:24px; opacity:0; z-index:4; border-radius:50%; background:radial-gradient(circle,#fff,#22d3ee 35%,#7c3aed 78%); box-shadow:0 0 30px #22d3ee; }
+    .battle-projectile.fly { animation: projectileFly .58s ease forwards; }
+    .battle-meta { display:flex; justify-content:space-between; gap:10px; color:var(--muted); font-size:12px; }
+    .battle-question { padding:17px; border:1px solid var(--line); border-radius:16px; background:rgba(148,163,184,.055); }
+    .battle-question h3 { font-size:clamp(20px,3vw,27px); margin:0 0 10px; }
+    .battle-result { padding:22px; border:1px solid rgba(249,115,22,.2); border-radius:18px; background:linear-gradient(135deg,rgba(139,92,246,.11),rgba(249,115,22,.07)); }
+    @keyframes battleLunge { 0%,100%{transform:translateX(0) scale(1)} 50%{transform:translateX(55px) scale(1.13) rotate(-4deg)} }
+    @keyframes bossImpact { 20%{transform:translateX(10px) rotate(5deg);filter:brightness(2)} 55%{transform:translateX(-8px) rotate(-4deg)} 100%{transform:none;filter:none} }
+    @keyframes projectileFly { 0%{opacity:1;transform:translateX(0) scale(.55)} 80%{opacity:1} 100%{opacity:0;transform:translateX(200px) scale(1.45)} }
+
+    .boss-avatar{position:relative;isolation:isolate;overflow:visible;background:none!important;border-radius:18px!important;font-size:0!important}
+    .boss-avatar .boss-core,.boss-avatar .boss-part{position:absolute;display:block}.boss-iron{filter:drop-shadow(0 12px 22px rgba(34,211,238,.2))}.boss-iron .boss-core{inset:17px 20px 10px;border-radius:24px 24px 16px 16px;background:linear-gradient(135deg,#64748b,#1f2937 46%,#0f172a);border:3px solid #94a3b8;box-shadow:inset 0 0 0 5px #334155,0 0 24px rgba(34,211,238,.16)}.boss-iron .boss-core:before{content:"";position:absolute;left:50%;top:40%;width:28px;height:28px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,#fff 0 8%,#67e8f9 20%,#0891b2 48%,#0f172a 70%);box-shadow:0 0 24px #22d3ee}.boss-iron .boss-core:after{content:"";position:absolute;left:23px;right:23px;bottom:13px;height:5px;background:repeating-linear-gradient(90deg,#22d3ee 0 5px,transparent 5px 10px)}.boss-iron .p1,.boss-iron .p2{top:31px;width:31px;height:49px;border-radius:11px;background:linear-gradient(#94a3b8,#334155);border:2px solid #64748b}.boss-iron .p1{left:0;transform:rotate(12deg)}.boss-iron .p2{right:0;transform:rotate(-12deg)}
+    .boss-volcano{filter:drop-shadow(0 10px 24px rgba(249,115,22,.34))}.boss-volcano .boss-core{left:34px;top:27px;width:52px;height:61px;border-radius:52% 48% 42% 58%;background:linear-gradient(145deg,#a855f7,#7c3aed 36%,#f97316 70%,#facc15);border:2px solid #fb923c}.boss-volcano .boss-core:before{content:"";position:absolute;left:9px;top:-13px;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:19px solid #22d3ee;filter:drop-shadow(23px 3px 0 #34d399)}.boss-volcano .boss-core:after{content:"";position:absolute;left:17px;top:23px;width:18px;height:21px;border-radius:50%;background:radial-gradient(circle,#fff,#facc15 28%,#f97316 63%,transparent 66%);box-shadow:0 0 20px #f97316}.boss-volcano .p1,.boss-volcano .p2{top:33px;width:47px;height:54px;background:linear-gradient(135deg,#fb7185,#f97316 52%,#facc15);clip-path:polygon(100% 40%,0 0,18% 100%)}.boss-volcano .p1{left:0;transform:rotate(-10deg)}.boss-volcano .p2{right:0;transform:scaleX(-1) rotate(-10deg)}
+    .boss-prism{filter:drop-shadow(0 10px 25px rgba(217,70,239,.32))}.boss-prism .boss-core{left:47px;top:34px;width:28px;height:61px;background:linear-gradient(#c4b5fd,#7c3aed);clip-path:polygon(50% 0,100% 25%,84% 100%,16% 100%,0 25%)}.boss-prism .p1,.boss-prism .p2,.boss-prism .p3{top:8px;width:36px;height:57px;border-radius:48% 48% 38% 38%;clip-path:polygon(50% 0,100% 24%,83% 100%,17% 100%,0 24%);border:2px solid rgba(255,255,255,.45)}.boss-prism .p1{left:7px;background:linear-gradient(#67e8f9,#0284c7)}.boss-prism .p2{left:42px;background:linear-gradient(#e879f9,#8b5cf6);transform:translateY(-8px)}.boss-prism .p3{right:7px;background:linear-gradient(#f9a8d4,#f59e0b)}.boss-prism .p1:after,.boss-prism .p2:after,.boss-prism .p3:after{content:"";position:absolute;left:13px;top:25px;width:7px;height:4px;border-radius:50%;background:#fff;box-shadow:0 0 8px currentColor}
+    .battle-arena.battle-iron{border-color:rgba(103,232,249,.22);background:radial-gradient(circle at 75% 85%,rgba(34,211,238,.12),transparent 34%),linear-gradient(180deg,#172033,#080d18)}.battle-arena.battle-volcano{border-color:rgba(249,115,22,.34);background:radial-gradient(circle at 75% 100%,rgba(249,115,22,.35),transparent 39%),linear-gradient(180deg,#2b1014,#0d0709)}.battle-arena.battle-prism{border-color:rgba(232,121,249,.3);background:radial-gradient(circle at 80% 85%,rgba(192,132,252,.26),transparent 37%),linear-gradient(180deg,#19164b,#07142b)}
+    .mastered-list{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}.mastered-list span{padding:6px 9px;border-radius:999px;border:1px solid rgba(52,211,153,.2);background:rgba(52,211,153,.08);color:#a7f3d0;font-size:10px;font-weight:800}
+    .lesson-pages{display:grid;gap:10px}.lesson-page{min-height:118px;animation:pageIn .25s ease}.lesson-pager{display:flex;align-items:center;justify-content:space-between;gap:10px}.lesson-dots{display:flex;gap:7px}.lesson-dots i{width:8px;height:8px;border-radius:50%;background:#334155;transition:.2s}.lesson-dots i.active{width:22px;border-radius:99px;background:linear-gradient(90deg,#8b5cf6,#22d3ee)}@keyframes pageIn{from{opacity:0;transform:translateX(10px)}to{opacity:1;transform:none}}
+    .battle-arena:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 75%,rgba(34,211,238,.12),transparent 20%),radial-gradient(circle at 80% 35%,rgba(249,115,22,.13),transparent 23%);animation:arenaGlow 3s ease-in-out infinite alternate}.battle-snake{position:relative;display:inline-block;width:126px;height:112px;margin-bottom:8px;background:none;border-radius:0;box-shadow:none;font-size:0;filter:drop-shadow(0 10px 20px rgba(34,211,238,.32))}.battle-snake i{position:absolute;display:block}.bs-coil{left:12px;bottom:10px;width:84px;height:62px;border:15px solid #7c3aed;border-right-color:#22d3ee;border-top-color:#34d399;border-radius:50%;transform:rotate(-8deg)}.bs-tail{left:1px;bottom:17px;width:50px;height:15px;border-radius:100% 10% 10% 100%;background:linear-gradient(90deg,#fb7185,#facc15,#34d399);transform:rotate(18deg);clip-path:polygon(0 50%,100% 0,100% 100%)}.bs-neck{right:30px;top:32px;width:20px;height:52px;border-radius:99px;background:linear-gradient(#22d3ee,#7c3aed);transform:rotate(20deg)}.bs-head{right:3px;top:14px;width:56px;height:42px;border-radius:55% 62% 45% 58%;background:linear-gradient(135deg,#67e8f9,#34d399 42%,#8b5cf6);border:2px solid #ffffff44}.bs-head b{position:absolute;top:10px;width:8px;height:10px;border-radius:50%;background:#fff}.bs-head b:first-child{left:11px}.bs-head b:last-child{right:11px}.bs-head b:after{content:"";position:absolute;width:3px;height:6px;left:3px;top:2px;border-radius:50%;background:#111827}@keyframes arenaGlow{to{filter:saturate(1.25) brightness(1.08)}}
+    /* quality pass */
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:34px 34px;mask-image:linear-gradient(to bottom,#000,transparent 70%)}
+    .course-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}.course-actions .ghost-btn{white-space:nowrap;border-color:rgba(34,211,238,.25);background:rgba(34,211,238,.07)}
+    .level-card{min-height:150px;display:flex;flex-direction:column}.level-card h3{margin-top:10px}.level-card p{flex:1}.level-cta{display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding-top:9px;border-top:1px solid rgba(255,255,255,.07);font-size:10px;font-weight:800;color:#93c5fd;opacity:.82}.locked .level-cta{color:var(--muted)}.complete .level-cta{color:#86efac}.level-card:hover:not(.locked) .level-cta span{transform:translateX(3px)}.level-cta span{transition:.18s}
+    .profile-card{position:relative;overflow:hidden}.profile-card:after{content:"XP";position:absolute;right:-4px;bottom:-18px;font-size:64px;font-weight:900;color:rgba(139,92,246,.06);transform:rotate(-8deg)}.stat{transition:.2s}.stat:hover{transform:translateY(-2px);border-color:rgba(103,232,249,.22)}
+    .modal-card{box-shadow:0 32px 100px rgba(0,0,0,.68),0 0 0 1px rgba(103,232,249,.04)}.stage-tabs{background:rgba(3,7,18,.35);backdrop-filter:blur(10px)}.stage-tab.active{box-shadow:inset 0 -2px #67e8f9}.stage-body{scrollbar-width:thin;scrollbar-color:#334155 transparent}.lesson-card{border-color:rgba(103,232,249,.12);background:linear-gradient(145deg,rgba(34,211,238,.045),rgba(139,92,246,.04))}.lesson-card p{font-size:15px;line-height:1.75}
+    .editor-bar{background:linear-gradient(90deg,#111827,#0b1220);border-bottom:1px solid rgba(255,255,255,.06)}.editor-clear{border:0;background:transparent;color:#93c5fd;font:700 10px "Space Grotesk",sans-serif;cursor:pointer;padding:5px 7px;border-radius:7px}.editor-clear:hover{background:rgba(147,197,253,.09);color:#e0f2fe}.code-editor{background:radial-gradient(circle at 100% 0,rgba(34,211,238,.035),transparent 32%),#060a12!important;line-height:1.75!important}.symbol-pad{box-shadow:0 18px 55px rgba(0,0,0,.55)}
+    .primary-btn{position:relative;overflow:hidden}.primary-btn:after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 20%,rgba(255,255,255,.18),transparent 70%);transform:translateX(-130%);transition:.45s}.primary-btn:hover:after{transform:translateX(130%)}
+    .battle-arena{box-shadow:inset 0 0 60px rgba(79,70,229,.08),0 18px 50px rgba(0,0,0,.25)}.boss-avatar{animation:bossIdle 2.7s ease-in-out infinite}.battle-snake{animation:snakeIdle 2.3s ease-in-out infinite}.battle-snake.attack{animation:battleLunge .58s cubic-bezier(.2,.8,.3,1)}@keyframes bossIdle{50%{transform:translateY(-5px) rotate(1deg)}}@keyframes snakeIdle{50%{transform:translateY(-5px) rotate(-1deg)}}
+    @media(max-width:720px){.course-actions{width:100%;justify-content:space-between}.course-actions .ghost-btn{flex:1}.level-card{min-height:140px}.level-cta{font-size:9px}.modal-foot{position:sticky;bottom:0;background:rgba(8,13,28,.94);backdrop-filter:blur(14px);z-index:6}.btn-row{width:100%;justify-content:flex-end}.hero h1{font-size:clamp(38px,12vw,58px)}}
+    /* three-world adventure map */
+    .chapter-world{grid-column:1/-1;position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:14px;padding:18px 20px;margin:10px 0 4px;border:1px solid rgba(255,255,255,.1);border-radius:20px;background:var(--world-bg);box-shadow:inset 0 1px rgba(255,255,255,.08),0 14px 34px rgba(0,0,0,.18)}
+    .chapter-world:after{content:"";position:absolute;inset:auto -7% -42px 48%;height:100px;background:radial-gradient(ellipse,var(--world-glow),transparent 66%);filter:blur(8px);pointer-events:none}.chapter-world small{display:block;color:var(--world-accent);font-size:9px;font-weight:900;letter-spacing:.16em;text-transform:uppercase}.chapter-world h3{margin:4px 0 2px;font-size:19px}.chapter-world p{margin:0;color:#a9b5ca;font-size:11px;line-height:1.45}.world-route{display:flex;gap:5px;align-items:center;position:relative;z-index:1}.world-route i{width:7px;height:7px;border:1px solid color-mix(in srgb,var(--world-accent) 55%,transparent);border-radius:50%;background:rgba(3,7,18,.55);box-shadow:0 0 0 2px rgba(0,0,0,.12)}.world-route i:nth-child(10){width:11px;height:11px;border-radius:3px;transform:rotate(45deg);background:var(--world-accent);box-shadow:0 0 16px var(--world-glow)}
+    .world-iron{--world-accent:#67e8f9;--world-glow:rgba(34,211,238,.38);--world-bg:linear-gradient(120deg,rgba(30,41,59,.96),rgba(8,47,73,.7),rgba(30,41,59,.9))}.world-volcano{--world-accent:#fb923c;--world-glow:rgba(249,115,22,.42);--world-bg:linear-gradient(120deg,rgba(49,18,20,.95),rgba(124,45,18,.65),rgba(32,12,22,.92))}.world-prism{--world-accent:#e879f9;--world-glow:rgba(192,132,252,.42);--world-bg:linear-gradient(120deg,rgba(30,27,75,.96),rgba(88,28,135,.62),rgba(8,47,73,.82))}
+    .level-card[data-world="iron"]:not(.locked){border-top-color:rgba(103,232,249,.35)}.level-card[data-world="volcano"]:not(.locked){border-top-color:rgba(251,146,60,.4)}.level-card[data-world="prism"]:not(.locked){border-top-color:rgba(232,121,249,.4)}.level-card[data-world="iron"].current{box-shadow:0 0 0 1px rgba(34,211,238,.25),0 16px 36px rgba(34,211,238,.08)}.level-card[data-world="volcano"].current{box-shadow:0 0 0 1px rgba(249,115,22,.28),0 16px 36px rgba(249,115,22,.08)}.level-card[data-world="prism"].current{box-shadow:0 0 0 1px rgba(217,70,239,.25),0 16px 36px rgba(168,85,247,.1)}
+    @media(max-width:640px){.chapter-world{grid-template-columns:1fr;padding:15px}.world-route{justify-content:flex-start}.world-route i{width:6px;height:6px}.world-route i:nth-child(10){width:9px;height:9px}}
+
+    /* premium learning-app layer */
+    .daily-card,.mastery-card{margin-top:12px;border:1px solid rgba(255,255,255,.08);border-radius:16px;background:linear-gradient(145deg,rgba(17,24,39,.88),rgba(8,13,28,.78));box-shadow:inset 0 1px rgba(255,255,255,.035)}.daily-card{display:flex;align-items:center;justify-content:space-between;padding:14px;gap:10px}.daily-card>div:first-child{display:grid;gap:3px}.daily-card small,.success-premium small{font-size:9px;font-weight:900;letter-spacing:.14em;color:#67e8f9}.daily-card b{font-size:13px}.daily-card span{font-size:10px;color:var(--muted)}.daily-ring{width:50px;height:50px;display:grid;place-items:center;border-radius:50%;background:conic-gradient(#8b5cf6 0 8%,#1e293b 8%);position:relative}.daily-ring:before{content:"";position:absolute;inset:5px;border-radius:50%;background:#0b1220}.daily-ring b{position:relative;font-size:10px}.daily-ring.done{background:conic-gradient(#34d399 100%,#1e293b 0)}.daily-ring.done b{color:#86efac}
+    .mastery-card{padding:14px}.mastery-head{display:flex;justify-content:space-between;font-size:11px;margin-bottom:9px}.mastery-head span{color:#a5f3fc;font-weight:800}.mastery-track{height:7px;border-radius:99px;background:#172033;overflow:hidden}.mastery-track i{display:block;width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,#8b5cf6,#22d3ee,#34d399);transition:.6s cubic-bezier(.2,.8,.2,1)}.mastery-skills{display:flex;justify-content:space-between;gap:5px;margin-top:9px}.mastery-skills span{font-size:8px;color:#64748b;text-transform:uppercase;letter-spacing:.06em}
+    .achievement-strip{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-top:10px}.achievement{min-height:44px;display:flex;align-items:center;gap:6px;padding:8px;border-radius:11px;border:1px solid rgba(251,191,36,.2);background:linear-gradient(135deg,rgba(251,191,36,.1),rgba(139,92,246,.06));font-size:14px;transition:.25s}.achievement b{font-size:8px;line-height:1.1;color:#fde68a}.achievement.locked{filter:grayscale(1);opacity:.32;background:rgba(15,23,42,.6);border-color:rgba(255,255,255,.06)}
+    .success-premium{display:flex;align-items:center;gap:12px;padding:14px;border-radius:14px;background:linear-gradient(135deg,rgba(52,211,153,.12),rgba(34,211,238,.07));border:1px solid rgba(52,211,153,.2)}.success-icon{width:42px;height:42px;display:grid;place-items:center;border-radius:50%;background:linear-gradient(135deg,#34d399,#22d3ee);color:#041014;font-size:22px;font-weight:900;box-shadow:0 0 24px rgba(52,211,153,.25)}.success-premium h4{margin:2px 0;font-size:17px}.success-premium p{margin:0!important;font-size:10px!important;color:#a7f3d0!important}.expected-output{display:grid;gap:6px;margin-top:10px;padding:12px;border-radius:12px;background:#050912;border:1px solid rgba(255,255,255,.06)}.expected-output b{font-size:10px;color:#94a3b8;text-transform:uppercase;letter-spacing:.08em}.expected-output span{font:12px "JetBrains Mono",monospace;white-space:pre-wrap;color:#d1fae5}
+    .course-panel{background:radial-gradient(circle at 100% 0,rgba(139,92,246,.08),transparent 28%),rgba(11,17,32,.72)}.topbar{box-shadow:0 14px 45px rgba(0,0,0,.14)}
+    /* Byte evolution + chapter-clear polish */
+    .snake-markings{position:absolute;inset:5px 7px;border-radius:50%;pointer-events:none;opacity:.22;background:repeating-linear-gradient(55deg,transparent 0 11px,rgba(255,255,255,.7) 11px 14px,transparent 14px 24px);mix-blend-mode:screen;transition:.35s}.quest-mascot .snake-head:before{content:"";position:absolute;left:21px;top:-8px;width:20px;height:13px;opacity:0;clip-path:polygon(50% 0,65% 36%,100% 25%,77% 58%,96% 100%,50% 77%,4% 100%,23% 58%,0 25%,35% 36%);background:linear-gradient(#fef3c7,#f59e0b);filter:drop-shadow(0 0 8px #fbbf24);transition:.35s}.quest-mascot.evo-hatchling{--snake-a:#7c3aed;--snake-b:#22d3ee;--snake-c:#34d399}.quest-mascot.evo-hatchling .snake-markings{opacity:.13}.quest-mascot.evo-spark{--snake-a:#8b5cf6;--snake-b:#22d3ee;--snake-c:#facc15;filter:drop-shadow(0 0 9px rgba(34,211,238,.22))}.quest-mascot.evo-spark .snake-markings{opacity:.34}.quest-mascot.evo-arc{--snake-a:#a855f7;--snake-b:#06b6d4;--snake-c:#f97316;filter:drop-shadow(0 0 12px rgba(168,85,247,.28))}.quest-mascot.evo-arc .snake-markings{opacity:.48;background:repeating-linear-gradient(55deg,transparent 0 9px,rgba(103,232,249,.92) 9px 12px,transparent 12px 18px)}.quest-mascot.evo-arc .snake-head:before{opacity:.55}.quest-mascot.evo-guardian{--snake-a:#7c3aed;--snake-b:#22d3ee;--snake-c:#facc15;filter:drop-shadow(0 0 16px rgba(232,121,249,.32)) drop-shadow(0 0 26px rgba(34,211,238,.18))}.quest-mascot.evo-guardian .snake-markings{opacity:.72;background:repeating-linear-gradient(55deg,transparent 0 8px,rgba(255,255,255,.92) 8px 11px,transparent 11px 17px)}.quest-mascot.evo-guardian .snake-head:before{opacity:1;transform:translateY(-2px) scale(1.12)}
+    .chapter-transition{position:relative;overflow:hidden;margin-top:12px;padding:16px;border-radius:16px;border:1px solid rgba(255,255,255,.12);background:linear-gradient(135deg,rgba(139,92,246,.16),rgba(34,211,238,.08));animation:chapterReveal .48s cubic-bezier(.2,.8,.2,1)}.chapter-transition:before{content:"";position:absolute;width:120px;height:120px;right:-35px;top:-48px;border-radius:50%;background:radial-gradient(circle,rgba(232,121,249,.27),transparent 68%);animation:orbPulse 1.8s ease-in-out infinite}.chapter-transition small{display:block;color:#a5f3fc;font-size:9px;font-weight:900;letter-spacing:.15em;text-transform:uppercase}.chapter-transition h4{margin:4px 0 5px;font-size:18px}.chapter-transition p{margin:0!important;color:#cbd5e1!important;font-size:11px!important}.chapter-transition .evolution-name{display:inline-flex;margin-top:10px;padding:6px 9px;border-radius:999px;background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.24);color:#fde68a;font-size:10px;font-weight:900}.chapter-transition.final{background:linear-gradient(135deg,rgba(126,34,206,.22),rgba(8,145,178,.13),rgba(245,158,11,.1));box-shadow:inset 0 0 44px rgba(232,121,249,.08)}@keyframes chapterReveal{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}
+    .battle-snake.evo-guardian{filter:drop-shadow(0 0 14px rgba(232,121,249,.4)) drop-shadow(0 10px 20px rgba(34,211,238,.32))}.battle-snake.evo-arc .bs-coil{border-left-color:#a855f7;border-bottom-color:#f97316}.battle-snake.evo-spark .bs-head{box-shadow:0 0 18px rgba(250,204,21,.22)}
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+    }
+
+    @media (max-width: 980px) {
+      .hero { grid-template-columns: 1fr; padding-top: 38px; }
+      .hero-card { transform: none; }
+      .dashboard-grid { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+      .level-grid { grid-template-columns: repeat(4, minmax(0,1fr)); }
+    }
+    @media (max-width: 720px) {
+      .app-shell { width: min(100% - 16px, 1180px); }
+      .topbar { grid-template-columns: 1fr auto; }
+      .xp-wrap { grid-column: 1 / -1; grid-row: 2; }
+      .brand small { display: none; }
+      .hero { padding-top: 32px; }
+      .level-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .course-head { align-items: flex-start; flex-direction: column; }
+      .legend { justify-content: flex-start; }
+      .stage-body { padding: 18px 14px; }
+      .modal { padding: 8px; }
+      .modal-card { max-height: 96vh; }
+      .modal-head, .modal-foot { padding: 13px 14px; }
+      .symbol-pad { grid-template-columns: repeat(5, minmax(0,1fr)); }
+      .hero-preview-grid { grid-template-columns: 1fr 92px; }
+      .quest-mascot { --display-scale: calc(var(--growth) * .78); transform-origin: right center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">Py</div>
+        <div>
+          <strong>PyQuest Battle</strong>
+          <small>Learn Python • Evolve your snake • Beat bosses</small>
+        </div>
+      </div>
+      <div class="xp-wrap">
+        <div class="xp-row"><span id="xpLabel">0 XP</span><span id="progressLabel">Level 1 unlocked</span></div>
+        <div class="xp-track"><div class="xp-bar" id="xpBar"></div></div>
+      </div>
+      <div class="top-actions">
+        <button class="icon-btn" id="resetBtn" title="Reset progress" aria-label="Reset progress">↺</button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div>
+        <span class="eyebrow">⚡ 30 levels • growing companion • 3 boss battles</span>
+        <h1>Level up your Python. <span class="gradient-text">Evolve your snake.</span></h1>
+        <p>Learn one idea at a time, answer a challenge, then prove it by writing code. Your snake companion grows as you progress, and every 10th level becomes a real boss fight where correct answers launch attacks.</p>
+      </div>
+      <div class="hero-card" aria-label="Python code preview and PyQuest companion">
+        <div class="terminal-dots"><i></i><i></i><i></i></div>
+        <div class="hero-preview-grid">
+          <div class="terminal-code"><span class="c-purple">name</span> = <span class="c-cyan">input</span>(<span class="c-yellow">"What is your name? "</span>)
+<span class="c-cyan">print</span>(<span class="c-yellow">f"Welcome, {</span><span class="c-purple">name</span><span class="c-yellow">}!"</span>)
+
+<span class="c-green"># Quest complete ✨</span></div>
+          <div class="companion-wrap">
+            <div class="quest-mascot" id="questMascot" aria-label="PyQuest snake companion" role="img">
+              <div class="snake-body"><i class="snake-markings"></i></div><div class="snake-neck"></div>
+              <div class="snake-head"><span class="eye e1"><span class="pupil"></span></span><span class="eye e2"><span class="pupil"></span></span></div>
+              <div class="code-orb">&lt;/&gt;</div>
+            </div>
+            <div class="companion-evolution"><b id="companionName">Byte Hatchling</b><span id="companionTier">Tier 1</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main class="dashboard-grid">
+      <aside class="sidebar">
+        <div class="profile-card">
+          <strong>🧠 Python Rookie</strong>
+          <p>Every cleared level grows your snake. Bosses unlock new evolutions.</p>
+        </div>
+        <div class="stat-row">
+          <div class="stat"><b id="levelsDone">0</b><span>Levels cleared</span></div>
+          <div class="stat"><b id="bossesDone">0</b><span>Bosses beaten</span></div>
+          <div class="stat"><b id="streakCount">0</b><span>Quest streak</span></div>
+          <div class="stat"><b id="xpMini">0</b><span>Total XP</span></div>
+        </div>
+        <div class="daily-card"><div><small>DAILY QUEST</small><b id="dailyTitle">Clear your next quest</b><span id="dailyText">Complete 1 level today</span></div><div class="daily-ring" id="dailyRing"><b id="dailyCount">0/1</b></div></div>
+        <div class="mastery-card"><div class="mastery-head"><b>Python mastery</b><span id="masteryPercent">0%</span></div><div class="mastery-track"><i id="masteryBar"></i></div><div class="mastery-skills"><span>Syntax</span><span>Logic</span><span>Loops</span><span>Functions</span></div></div>
+        <div class="achievement-strip" id="achievementStrip"><span class="achievement locked" data-a="first">✦<b>First Steps</b></span><span class="achievement locked" data-a="boss">♛<b>Boss Breaker</b></span><span class="achievement locked" data-a="ten">⚡<b>Level 10</b></span><span class="achievement locked" data-a="master">🏆<b>Guardian</b></span></div>
+        <div class="sidebar-title">How a level works</div>
+        <div class="sidebar-tip">📖 Learn the idea → 🧩 beat the MCQ → 💻 write the code. Your progress saves automatically on this device.</div>
+        <div class="sidebar-title">Code helper</div>
+        <div class="sidebar-tip">In code questions, tap the purple <b>+</b> button to insert symbols like <code>" "</code>, <code>( )</code>, <code>[ ]</code>, <code>:</code>, and <code>=</code> right where your cursor is.</div>
+      </aside>
+
+      <section class="course-panel">
+        <div class="course-head">
+          <div>
+            <h2>Python Battle Map</h2>
+            <p>Finish levels in order. Every boss guards a new snake evolution.</p>
+          </div>
+          <div class="course-actions"><button class="ghost-btn" id="continueQuest">▶ Continue quest</button><div class="legend"><span>✓ complete</span><span>◆ boss</span><span>🔒 locked</span></div></div>
+        </div>
+        <div class="quest-trail"><div class="level-grid" id="levelGrid"></div></div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal" id="levelModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card" id="modalCard">
+      <div class="modal-head">
+        <div class="modal-title-wrap">
+          <small id="modalSubtitle">Level 1</small>
+          <h2 id="modalTitle">Hello, Python</h2>
+        </div>
+        <button class="icon-btn" id="closeModal" aria-label="Close">✕</button>
+      </div>
+      <div class="stage-tabs">
+        <button class="stage-tab active" data-stage="0">1. Learn</button>
+        <button class="stage-tab" data-stage="1">2. Quiz</button>
+        <button class="stage-tab" data-stage="2">3. Code</button>
+      </div>
+      <div class="stage-body" id="stageBody"></div>
+      <div class="modal-foot">
+        <div class="modal-foot-left" id="stageStatus">Stage 1 of 3</div>
+        <div class="btn-row" id="footerButtons"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const L = (title, topic, lessonTitle, page1, page2, example, quiz, code) => ({ title, topic, lessonTitle, pages:[page1,page2], example, quiz, code });
+    const Q = (question, options, answer, explain) => ({ question, options, answer, explain });
+    const C = (prompt, starter, hint, checks, output) => ({ prompt, starter, hint, checks, output });
+
+    const levels = [
+      L("Hello, Python", "print()", "Make Python talk",
+        "Python runs instructions from top to bottom. The <b>print()</b> function shows something on the screen. Put text inside quotation marks so Python knows it is a string.",
+        "Parentheses belong to the function call. A tiny typo matters: <code>print</code> is not the same as <code>Print</code>. Python is case-sensitive.",
+        'print("Hello, world!")',
+        Q("Which line correctly prints Hello?", ['print("Hello")','Print("Hello")','print Hello','say("Hello")'], 0, "Correct — print() is lowercase, and the text goes inside quotes and parentheses."),
+        C("Print exactly: Python is awesome!", "", "Use print(\"your text\").", [
+          ["uses print()", c => /print\s*\(/.test(c)],
+          ["includes the correct message", c => /Python is awesome!/.test(c)],
+          ["uses quotation marks", c => /[\"']Python is awesome![\"']/.test(c)]
+        ], "Python is awesome!")
+      ),
+      L("String Power", "strings", "Text is called a string",
+        "A <b>string</b> is text wrapped in single or double quotation marks. Python treats <code>\"dragon\"</code> as text, not as a variable name.",
+        "You can print strings directly or save them for later. Quotes must match: start with <code>\"</code> and end with <code>\"</code>.",
+        'print("Level up!")\nprint(\'Python\')',
+        Q("Which one is a string?", ["42", '"42"', "score", "True"], 1, "The quotes make \"42\" a string even though it looks like a number."),
+        C("Print your favorite game as a string.", 'print("")', "Type the game name between the quotes.", [
+          ["uses print()", c => /print\s*\(/.test(c)],
+          ["puts text in quotes", c => /print\s*\(\s*[\"'][^\"']+[\"']\s*\)/.test(c)]
+        ], "Nice — Python printed your string!")
+      ),
+      L("Number Lab", "numbers", "Python can calculate",
+        "Python can work with integers like <code>8</code> and decimals like <code>3.5</code>. You can use <code>+</code>, <code>-</code>, <code>*</code>, and <code>/</code>.",
+        "Python follows normal order of operations. Parentheses can make the order extra clear.",
+        'print(12 + 4)\nprint(7 * 3)',
+        Q("What does print(6 * 4) show?", ["10", "24", "64", "6 * 4"], 1, "The * symbol means multiplication, so 6 × 4 = 24."),
+        C("Use Python to print the result of 12 * 4.", "print()", "Put the math inside print().", [
+          ["uses print()", c => /print\s*\(/.test(c)],
+          ["multiplies 12 by 4", c => /12\s*\*\s*4/.test(c)]
+        ], "48")
+      ),
+      L("Variable Vault", "variables", "Save information in variables",
+        "A variable is a named box for a value. Use <code>=</code> to store something: <code>coins = 20</code>.",
+        "You can update a variable later. Variable names cannot contain spaces, and they should explain what the value means.",
+        'coins = 20\ncoins = coins + 10\nprint(coins)',
+        Q("What does = do in coins = 20?", ["checks equality", "stores 20 in coins", "prints 20", "deletes coins"], 1, "In an assignment, = stores the value on the right inside the variable on the left."),
+        C("Create a variable called score with value 100, then print it.", "", "Two lines: first assign, then print the variable.", [
+          ["creates score = 100", c => /score\s*=\s*100/.test(c)],
+          ["prints score", c => /print\s*\(\s*score\s*\)/.test(c)]
+        ], "100")
+      ),
+      L("Ask the Player", "input()", "Get information from the user",
+        "The <b>input()</b> function pauses and lets the user type an answer. Python gives that answer back as a string.",
+        "Usually you save the answer in a variable so you can use it later, like <code>game = input(\"Favorite game? \" )</code>.",
+        'game = input("What is your favorite game? ")\nprint(game)',
+        Q("What type of value does input() normally give you?", ["string", "integer", "boolean", "list"], 0, "input() gives you text (a string) unless you convert it."),
+        C("Ask the user for their favorite anime, save it in anime, then print anime.", 'anime = input("")\n', "Use input() on line 1 and print(anime) on line 2.", [
+          ["saves input in anime", c => /anime\s*=\s*input\s*\(/.test(c)],
+          ["prints anime", c => /print\s*\(\s*anime\s*\)/.test(c)]
+        ], "Whatever the user typed")
+      ),
+      L("F-String Forge", "f-strings", "Mix variables into text",
+        "An f-string lets you place a variable inside a string using curly braces. Put <code>f</code> before the opening quote.",
+        "Example: if <code>name = \"Kai\"</code>, then <code>print(f\"Hi {name}!\")</code> prints <code>Hi Kai!</code>.",
+        'name = "Kai"\nprint(f"Welcome, {name}!")',
+        Q("Which line is a valid f-string?", ['print("Hi {name}")','print(f"Hi {name}")','print(f(Hi name))','fprint("Hi")'], 1, "The f goes before the opening quote, and the variable goes inside {curly braces}."),
+        C("Create name = \"Alex\" and print: Welcome, Alex! using an f-string.", 'name = "Alex"\n', "Use print(f\"Welcome, {name}!\").", [
+          ["creates the name variable", c => /name\s*=\s*[\"']Alex[\"']/.test(c)],
+          ["uses an f-string", c => /print\s*\(\s*f[\"']/.test(c)],
+          ["inserts {name}", c => /\{\s*name\s*\}/.test(c)]
+        ], "Welcome, Alex!")
+      ),
+      L("True or False", "booleans", "Make comparisons",
+        "A boolean is either <code>True</code> or <code>False</code>. Comparisons create booleans: <code>7 > 3</code> is True.",
+        "Use <code>==</code> to compare values. One equals sign <code>=</code> stores a value; two equals signs <code>==</code> ask whether values match.",
+        'print(7 > 3)\nprint(5 == 5)\nprint(2 != 9)',
+        Q("Which operator asks 'are these equal?'", ["=", "==", "!=", ">"], 1, "== compares two values. = is for assignment."),
+        C("Print the result of checking whether 10 is greater than 4.", "print()", "Put 10 > 4 inside print().", [
+          ["uses a greater-than comparison", c => /10\s*>\s*4/.test(c)],
+          ["prints the comparison", c => /print\s*\(/.test(c)]
+        ], "True")
+      ),
+      L("If Gate", "if", "Run code only when something is true",
+        "An <b>if statement</b> lets Python make a decision. The indented line runs only when the condition is True.",
+        "The colon <code>:</code> ends the if line, and the next line must be indented. Indentation is part of Python's grammar.",
+        'level = 8\nif level >= 5:\n    print("Unlocked!")',
+        Q("What must appear at the end of an if line?", [";", ":", ",", "."], 1, "Python if statements end the condition line with a colon."),
+        C("If score is greater than 50, print Winner!", 'score = 75\n', "Write if score > 50: then indent a print line.", [
+          ["has an if statement", c => /if\s+score\s*>\s*50\s*:/.test(c)],
+          ["prints Winner!", c => /print\s*\(\s*[\"']Winner![\"']\s*\)/.test(c)],
+          ["indents the print line", c => /\n[ \t]+print/.test(c)]
+        ], "Winner!")
+      ),
+      L("Else Escape", "else / elif", "Choose between paths",
+        "Use <code>else</code> when you want a fallback path. If the if condition is False, Python runs the else block.",
+        "Use <code>elif</code> when there are more than two choices. Python checks the conditions from top to bottom and takes the first matching path.",
+        'hp = 0\nif hp > 0:\n    print("Still fighting")\nelse:\n    print("Game over")',
+        Q("When does an else block run?", ["always", "when the if condition is False", "before if", "only in loops"], 1, "else is the backup path when the if condition was not true."),
+        C("If age is 13 or more, print Teen. Otherwise print Kid.", 'age = 14\n', "Use if age >= 13: and an else: block.", [
+          ["checks age >= 13", c => /if\s+age\s*>=\s*13\s*:/.test(c)],
+          ["has else", c => /else\s*:/.test(c)],
+          ["prints Teen", c => /[\"']Teen[\"']/.test(c)],
+          ["prints Kid", c => /[\"']Kid[\"']/.test(c)]
+        ], "Teen")
+      ),
+      {
+        title:"BOSS 1: Ironclad Golem", topic:"Boss Test", boss:true,
+        lessonTitle:"Boss Battle: The Throne Forge",
+        pages:["You made it through printing, variables, input, comparisons, and decisions. The Ironclad Golem guards the throne forge. Trace printing, variables, input, comparisons, and decisions carefully — each correct idea cracks an armor plate.", "Every correct answer now launches a snake attack. You may survive one mistake, but you need enough hits to drain the boss HP before the coding finisher."],
+        example:'name = input("Name: ")\nscore = 60\nif score >= 50:\n    print(f"{name} wins!")',
+        quiz:[
+          Q("Which stores the number 20 in coins?", ["coins == 20","coins = 20","20 = coins","print(coins)"],1,"= stores a value."),
+          Q("Which gets text from a user?", ["print()","input()","if","True"],1,"input() reads what the user types."),
+          Q("Which compares two values for equality?", ["=","==","=>","is="],1,"== is the equality operator."),
+          Q("What comes after an if condition?", [":",";","?","="],0,"An if header ends with a colon."),
+          Q("Which inserts name into text?", ['"Hi name"','f"Hi {name}"','"Hi" + {name}','print{name}'],1,"f-strings use braces inside an f-string.")
+        ],
+        code:C("Build a tiny login greeting: ask for name. If name == \"Admin\", print Welcome, Admin! Otherwise print Hello!", 'name = input("Name: ")\n', "Use if name == \"Admin\": followed by else:.", [
+          ["gets name with input", c => /name\s*=\s*input\s*\(/.test(c)],
+          ["checks name == Admin", c => /if\s+name\s*==\s*[\"']Admin[\"']\s*:/.test(c)],
+          ["has an else block", c => /else\s*:/.test(c)],
+          ["prints Welcome, Admin!", c => /Welcome, Admin!/.test(c)],
+          ["prints Hello!", c => /Hello!/.test(c)]
+        ], "Admin → Welcome, Admin! | anyone else → Hello!")
+      },
+      L("Logic Combo", "and / or / not", "Combine conditions",
+        "Use <code>and</code> when both conditions must be True. Use <code>or</code> when at least one can be True. <code>not</code> flips True and False.",
+        "These are useful for game rules, logins, filters, and any decision with more than one requirement.",
+        'age = 14\nhas_ticket = True\nif age >= 12 and has_ticket:\n    print("Enter")',
+        Q("When is A and B True?", ["when both are True", "when either one is True", "when both are False", "always"], 0, "and needs both sides to be True."),
+        C("If level is at least 5 AND has_key is True, print Door opened.", 'level = 6\nhas_key = True\n', "Put both conditions on one if line with and.", [
+          ["uses if", c => /if\s+/.test(c)],
+          ["checks level >= 5", c => /level\s*>=\s*5/.test(c)],
+          ["uses and", c => /\band\b/.test(c)],
+          ["checks has_key", c => /has_key/.test(c)],
+          ["prints Door opened", c => /Door opened/.test(c)]
+        ], "Door opened")
+      ),
+      L("While Cave", "while loops", "Repeat while something is true",
+        "A <b>while loop</b> repeats as long as its condition remains True. It is great when you do not know exactly how many repeats you need.",
+        "Make sure something changes inside the loop. Otherwise you can accidentally create an infinite loop.",
+        'count = 1\nwhile count <= 3:\n    print(count)\n    count = count + 1',
+        Q("What can cause a while loop to run forever?", ["a changing condition", "a condition that never becomes False", "using print", "using numbers"], 1, "If the condition never becomes False, the loop has no reason to stop."),
+        C("Use a while loop to print 1, 2, 3. Start with count = 1.", 'count = 1\n', "Loop while count <= 3, print count, then add 1.", [
+          ["has while count <= 3", c => /while\s+count\s*<=\s*3\s*:/.test(c)],
+          ["prints count", c => /print\s*\(\s*count\s*\)/.test(c)],
+          ["updates count", c => /count\s*=\s*count\s*\+\s*1|count\s*\+=\s*1/.test(c)]
+        ], "1\n2\n3")
+      ),
+      L("Range Runner", "for + range", "Repeat a known number of times",
+        "A <b>for loop</b> is perfect when you know what you want to loop over. <code>range(5)</code> gives 0, 1, 2, 3, 4.",
+        "The variable after <code>for</code> changes on each loop. You can choose any sensible variable name.",
+        'for i in range(3):\n    print(i)',
+        Q("What numbers come from range(3)?", ["1, 2, 3", "0, 1, 2", "0, 1, 2, 3", "3 only"], 1, "range(3) starts at 0 and stops before 3."),
+        C("Use a for loop and range() to print 0, 1, 2, 3, 4.", "", "Use range(5).", [
+          ["uses a for loop", c => /for\s+\w+\s+in\s+range\s*\(/.test(c)],
+          ["uses range(5)", c => /range\s*\(\s*5\s*\)/.test(c)],
+          ["prints the loop variable", c => /print\s*\(\s*\w+\s*\)/.test(c)]
+        ], "0\n1\n2\n3\n4")
+      ),
+      L("String Scanner", "string indexing", "Grab one character",
+        "Strings are sequences of characters. Python starts counting positions at <b>0</b>, so the first character is index 0.",
+        "Use square brackets after the string or variable: <code>word[0]</code>. Negative indexes count from the end; <code>word[-1]</code> is the last character.",
+        'word = "Python"\nprint(word[0])\nprint(word[-1])',
+        Q("If word = 'Python', what is word[0]?", ["P", "y", "Python", "0"], 0, "Index 0 means the first character."),
+        C("Set word = \"Ninja\" and print its first character using an index.", 'word = "Ninja"\n', "Print word[0].", [
+          ["uses word[0]", c => /word\s*\[\s*0\s*\]/.test(c)],
+          ["prints it", c => /print\s*\(/.test(c)]
+        ], "N")
+      ),
+      L("String Toolkit", "string methods", "Transform text",
+        "Strings come with useful methods. <code>.lower()</code> makes text lowercase, <code>.upper()</code> makes it uppercase, and <code>.strip()</code> removes extra spaces at the ends.",
+        "Methods are attached to a value with a dot. Many methods return a new string instead of changing the original one.",
+        'name = "  PYTHON  "\nprint(name.strip().lower())',
+        Q("What does .upper() do?", ["adds spaces", "turns text uppercase", "counts letters", "deletes text"], 1, ".upper() returns an uppercase version of the string."),
+        C("Set shout = \"hello\" and print an uppercase version using .upper().", 'shout = "hello"\n', "Use shout.upper() inside print().", [
+          ["calls .upper()", c => /shout\s*\.\s*upper\s*\(\s*\)/.test(c)],
+          ["prints the result", c => /print\s*\(/.test(c)]
+        ], "HELLO")
+      ),
+      L("List Inventory", "lists", "Store many values together",
+        "A <b>list</b> stores multiple items in order. Lists use square brackets and commas: <code>[\"sword\", \"potion\"]</code>.",
+        "Like strings, list indexes start at 0. Lists can be changed after you create them.",
+        'items = ["sword", "potion", "map"]\nprint(items[0])',
+        Q("Which one is a Python list?", ['("a", "b")','["a", "b"]','{"a", "b"}','<"a", "b">'], 1, "Lists use square brackets."),
+        C("Create a list called pets with \"cat\" and \"dog\", then print the first item.", "", "pets = [\"cat\", \"dog\"] then print(pets[0]).", [
+          ["creates pets list", c => /pets\s*=\s*\[/.test(c)],
+          ["contains cat", c => /[\"']cat[\"']/.test(c)],
+          ["contains dog", c => /[\"']dog[\"']/.test(c)],
+          ["prints pets[0]", c => /print\s*\(\s*pets\s*\[\s*0\s*\]\s*\)/.test(c)]
+        ], "cat")
+      ),
+      L("Inventory Upgrade", "list methods", "Add and remove list items",
+        "Use <code>.append()</code> to add one item to the end of a list. Use <code>.remove()</code> to remove a matching item.",
+        "You can check how many items are in a list with <code>len(list_name)</code>.",
+        'items = ["map"]\nitems.append("key")\nprint(len(items))',
+        Q("Which method adds one item to the end of a list?", [".add()", ".append()", ".push()", ".insert_end()"], 1, ".append() is the standard beginner-friendly way to add one item."),
+        C("Start with items = [\"map\"]. Append \"key\", then print items.", 'items = ["map"]\n', "Use items.append(\"key\").", [
+          ["uses append", c => /items\s*\.\s*append\s*\(\s*[\"']key[\"']\s*\)/.test(c)],
+          ["prints items", c => /print\s*\(\s*items\s*\)/.test(c)]
+        ], "['map', 'key']")
+      ),
+      L("Loot Loop", "looping lists", "Loop through a list",
+        "A for loop can visit every item in a list. Instead of using indexes, give each item a temporary variable name.",
+        "This pattern is one of the most useful in Python: <code>for item in items:</code>.",
+        'games = ["Minecraft", "Roblox", "Zelda"]\nfor game in games:\n    print(game)',
+        Q("In 'for game in games:', what is game?", ["the whole list", "one item at a time", "a function", "an index only"], 1, "game becomes each item from games, one after another."),
+        C("Loop through colors and print every color.", 'colors = ["red", "blue", "green"]\n', "Use for color in colors: then print(color).", [
+          ["loops over colors", c => /for\s+\w+\s+in\s+colors\s*:/.test(c)],
+          ["prints the loop item", c => /print\s*\(\s*\w+\s*\)/.test(c)]
+        ], "red\nblue\ngreen")
+      ),
+      L("Decision Maze", "nested decisions", "Put decisions inside decisions",
+        "Sometimes one decision only makes sense after another one succeeds. You can place an if statement inside another if block.",
+        "Keep the indentation clear. Each deeper block gets another level of indentation.",
+        'has_key = True\nlevel = 8\nif has_key:\n    if level >= 5:\n        print("Secret room")',
+        Q("What tells Python which lines belong inside a nested if?", ["brackets", "indentation", "commas", "quotes"], 1, "Indentation defines Python blocks."),
+        C("If logged_in is True, then inside it check if coins >= 10. If both pass, print Shop unlocked.", 'logged_in = True\ncoins = 12\n', "Use one if inside another, with the second indented farther.", [
+          ["checks logged_in", c => /if\s+logged_in\s*:/.test(c)],
+          ["checks coins >= 10", c => /if\s+coins\s*>=\s*10\s*:/.test(c)],
+          ["prints Shop unlocked", c => /Shop unlocked/.test(c)]
+        ], "Shop unlocked")
+      ),
+      {
+        title:"BOSS 2: Chromaflare Dragon", topic:"Boss Test", boss:true,
+        lessonTitle:"Boss Battle: Heart of the Volcano",
+        pages:["The Chromaflare Dragon guards the crater. Combine conditions, loops, strings, and lists like a real program to break through its flame shield.", "Every correct answer damages the Chromaflare Dragon. One mistake can be survived; drain its HP, then beat the coding finisher to unlock functions."],
+        example:'players = ["Ari", "Mika", "Noor"]\nfor player in players:\n    if len(player) >= 4:\n        print(player.upper())',
+        quiz:[
+          Q("Which repeats while a condition stays True?", ["if","while","input","list"],1,"while repeats based on a condition."),
+          Q("What does range(4) produce?", ["1,2,3,4","0,1,2,3","0,1,2,3,4","4 only"],1,"range stops before the end number."),
+          Q("What is the first list index?", ["1","-1","0","first"],2,"Python indexing starts at 0."),
+          Q("Which adds one list item?", ["append","upper","strip","range"],0,"append() adds to a list."),
+          Q("What does .lower() return?", ["lowercase text","a number","a list","True"],0,".lower() makes a lowercase string.")
+        ],
+        code:C("Given nums = [1,2,3,4,5], loop through nums and print only numbers greater than 3.", 'nums = [1, 2, 3, 4, 5]\n', "Use a for loop, then an if inside it.", [
+          ["loops over nums", c => /for\s+\w+\s+in\s+nums\s*:/.test(c)],
+          ["checks > 3", c => /if\s+\w+\s*>\s*3\s*:/.test(c)],
+          ["prints the number", c => /print\s*\(\s*\w+\s*\)/.test(c)]
+        ], "4\n5")
+      },
+      L("Function Factory", "functions", "Create reusable code",
+        "A function is a named block of code you can run whenever you need it. Create one with <code>def</code> and call it using parentheses.",
+        "Functions help you avoid copying the same code again and again. Give each function one clear job.",
+        'def cheer():\n    print("You got this!")\n\ncheer()',
+        Q("Which keyword creates a function?", ["func", "def", "make", "return"], 1, "Python uses def to define a function."),
+        C("Create a function called greet that prints Hello!, then call greet().", "", "Use def greet():, indent the print, then call greet() below.", [
+          ["defines greet", c => /def\s+greet\s*\(\s*\)\s*:/.test(c)],
+          ["prints Hello!", c => /print\s*\(\s*[\"']Hello![\"']\s*\)/.test(c)],
+          ["calls greet()", c => /\ngreet\s*\(\s*\)/.test(c)]
+        ], "Hello!")
+      ),
+      L("Parameter Portal", "parameters", "Give functions information",
+        "Parameters are variables a function receives when you call it. Put parameter names inside the function's parentheses.",
+        "When you call the function, the values you pass are called arguments.",
+        'def greet(name):\n    print(f"Hi, {name}!")\n\ngreet("Lina")',
+        Q("In def greet(name):, what is name?", ["a loop", "a parameter", "a list", "a module"], 1, "name is a parameter — a variable that receives an argument."),
+        C("Create shout(word) that prints word.upper(). Then call shout(\"python\").", "", "The function needs one parameter named word.", [
+          ["defines shout(word)", c => /def\s+shout\s*\(\s*word\s*\)\s*:/.test(c)],
+          ["uses word.upper()", c => /word\s*\.\s*upper\s*\(\s*\)/.test(c)],
+          ["calls shout with python", c => /shout\s*\(\s*[\"']python[\"']\s*\)/.test(c)]
+        ], "PYTHON")
+      ),
+      L("Return Route", "return", "Send a value back",
+        "A function can use <code>return</code> to send a result back to the code that called it. That result can be stored, printed, or used in more calculations.",
+        "<code>return</code> is different from <code>print</code>: print displays something; return gives a value back.",
+        'def double(n):\n    return n * 2\n\nanswer = double(6)\nprint(answer)',
+        Q("What does return do?", ["prints automatically", "sends a value back from a function", "repeats a loop", "imports code"], 1, "return makes a function produce a result."),
+        C("Create add(a, b) that returns a + b. Print add(3, 4).", "", "Use return inside the function, then print the function call.", [
+          ["defines add(a,b)", c => /def\s+add\s*\(\s*a\s*,\s*b\s*\)\s*:/.test(c)],
+          ["returns a + b", c => /return\s+a\s*\+\s*b/.test(c)],
+          ["prints add(3,4)", c => /print\s*\(\s*add\s*\(\s*3\s*,\s*4\s*\)\s*\)/.test(c)]
+        ], "7")
+      ),
+      L("Scope Zone", "scope", "Know where variables exist",
+        "A variable created inside a function is usually <b>local</b> to that function. Code outside the function cannot normally use it directly.",
+        "Keeping temporary variables local helps prevent accidental changes elsewhere in your program.",
+        'def make_score():\n    score = 10\n    return score\n\nprint(make_score())',
+        Q("A variable made inside a function is usually called…", ["local", "global forever", "a module", "a method"], 0, "Local variables belong to that function call."),
+        C("Create get_message() with a local variable message = \"Ready!\" and return message. Then print get_message().", "", "Keep message inside the function.", [
+          ["defines get_message", c => /def\s+get_message\s*\(\s*\)\s*:/.test(c)],
+          ["creates local message", c => /[ \t]+message\s*=\s*[\"']Ready![\"']/.test(c)],
+          ["returns message", c => /return\s+message/.test(c)],
+          ["prints function result", c => /print\s*\(\s*get_message\s*\(\s*\)\s*\)/.test(c)]
+        ], "Ready!")
+      ),
+      L("Dictionary Dungeon", "dictionaries", "Store key-value pairs",
+        "A dictionary stores information as <b>key: value</b> pairs. Use curly braces: <code>{\"name\": \"Ari\", \"level\": 3}</code>.",
+        "Access a value using its key in square brackets, like <code>player[\"name\"]</code>.",
+        'player = {"name": "Ari", "level": 3}\nprint(player["name"])',
+        Q("Which symbol separates a dictionary key from its value?", ["=", ":", ",", "->"], 1, "Dictionary entries use key: value."),
+        C("Create player = {\"name\": \"Kai\", \"score\": 50} and print player[\"score\"].", "", "Use curly braces for the dictionary and square brackets to access score.", [
+          ["creates player dictionary", c => /player\s*=\s*\{/.test(c)],
+          ["has name Kai", c => /[\"']name[\"']\s*:\s*[\"']Kai[\"']/.test(c)],
+          ["has score 50", c => /[\"']score[\"']\s*:\s*50/.test(c)],
+          ["prints score key", c => /print\s*\(\s*player\s*\[\s*[\"']score[\"']\s*\]\s*\)/.test(c)]
+        ], "50")
+      ),
+      L("Dictionary Explorer", "dictionary loops", "Loop through dictionary data",
+        "You can loop over a dictionary. <code>.items()</code> gives you each key and value together.",
+        "A common pattern is <code>for key, value in data.items():</code>.",
+        'stats = {"hp": 10, "mp": 5}\nfor key, value in stats.items():\n    print(key, value)',
+        Q("Which method gives dictionary keys and values together?", [".items()", ".append()", ".upper()", ".range()"], 0, ".items() provides pairs of keys and values."),
+        C("Loop through stats using .items() and print each key and value.", 'stats = {"hp": 10, "mp": 5}\n', "Use for key, value in stats.items():", [
+          ["uses .items()", c => /stats\s*\.\s*items\s*\(\s*\)/.test(c)],
+          ["unpacks key and value", c => /for\s+\w+\s*,\s*\w+\s+in/.test(c)],
+          ["prints both", c => /print\s*\(\s*\w+\s*,\s*\w+\s*\)/.test(c)]
+        ], "hp 10\nmp 5")
+      ),
+      L("Tuple & Set Arena", "tuples and sets", "Meet two more collections",
+        "A <b>tuple</b> is like a list that you normally do not change. It uses parentheses. A <b>set</b> stores unique values and automatically removes duplicates.",
+        "You do not need to master them yet. Just remember: list = ordered/changeable, tuple = fixed-ish, set = unique items.",
+        'point = (4, 7)\ntags = {"python", "game", "python"}\nprint(tags)',
+        Q("Which collection automatically keeps unique values?", ["list", "string", "set", "tuple"], 2, "Sets remove duplicate values."),
+        C("Create a tuple called point with values 3 and 5, then print point.", "", "Tuples use parentheses: point = (3, 5).", [
+          ["creates point tuple", c => /point\s*=\s*\(\s*3\s*,\s*5\s*\)/.test(c)],
+          ["prints point", c => /print\s*\(\s*point\s*\)/.test(c)]
+        ], "(3, 5)")
+      ),
+      L("Error Shield", "try / except", "Handle errors safely",
+        "Programs sometimes receive unexpected input. A <code>try</code> block attempts code, and <code>except</code> can handle an error instead of crashing.",
+        "For beginners, this is useful when converting user input to a number.",
+        'try:\n    age = int(input("Age: "))\n    print(age)\nexcept ValueError:\n    print("Please enter a number")',
+        Q("What is the purpose of except?", ["repeat forever", "handle an error", "create a variable", "sort a list"], 1, "except gives your program a backup path when an error occurs."),
+        C("Use try/except ValueError around int(input()). If it fails, print Invalid number.", "", "Put int(input(...)) inside try:, then except ValueError:.", [
+          ["has try", c => /try\s*:/.test(c)],
+          ["uses int(input())", c => /int\s*\(\s*input\s*\(/.test(c)],
+          ["catches ValueError", c => /except\s+ValueError\s*:/.test(c)],
+          ["prints Invalid number", c => /Invalid number/.test(c)]
+        ], "Valid input → number | bad input → Invalid number")
+      ),
+      L("Mini-Project Prep", "combining skills", "Plan before you code",
+        "Real programs mix several ideas. A simple quiz game might need variables for score, input for answers, if statements for checking, and a final print.",
+        "Before coding, break the problem into small steps. This makes bugs easier to find and keeps your code readable.",
+        'score = 0\nanswer = input("2 + 2 = ")\nif answer == "4":\n    score += 1\nprint(f"Score: {score}")',
+        Q("What is a good first step for a bigger coding task?", ["write random code", "break it into small steps", "use every Python feature", "avoid variables"], 1, "Small steps make the problem easier to solve and test."),
+        C("Make a one-question quiz: score starts at 0, ask 'Python uses indentation? yes/no'. If answer.lower() == 'yes', add 1. Print the score.", 'score = 0\n', "Use input(), .lower(), if, score += 1, then print.", [
+          ["starts score at 0", c => /score\s*=\s*0/.test(c)],
+          ["gets input", c => /input\s*\(/.test(c)],
+          ["uses .lower()", c => /\.lower\s*\(\s*\)/.test(c)],
+          ["checks yes", c => /==\s*[\"']yes[\"']/.test(c)],
+          ["adds to score", c => /score\s*\+=\s*1|score\s*=\s*score\s*\+\s*1/.test(c)],
+          ["prints score", c => /print\s*\(/.test(c)]
+        ], "Correct answer → score becomes 1")
+      ),
+      {
+        title:"FINAL BOSS: Prism Hydra", topic:"Final Boss", boss:true,
+        lessonTitle:"Final Boss: Build It Yourself",
+        pages:["You have reached the end of the beginner path. The Prism Hydra tests the full beginner path. Its three crystal heads represent logic, data, and functions — trace every line before you strike.", "Every correct answer shatters part of the Prism Hydra’s crystal armor. Trace the code carefully, drain its HP, then complete the final coding finisher."],
+        example:'def bonus(score):\n    if score >= 10:\n        return score + 5\n    return score\n\nprint(bonus(12))',
+        quiz:[
+          Q("What keyword sends a function result back?", ["print","return","yielding","send"],1,"return sends a result to the caller."),
+          Q("Which collection stores key-value pairs?", ["list","tuple","dictionary","string"],2,"Dictionaries store key-value pairs."),
+          Q("What does .append() work with?", ["lists","if statements","integers only","functions only"],0,"append() adds one item to a list."),
+          Q("Why use try/except?", ["to make code colorful","to handle expected errors","to replace all if statements","to speed up every program"],1,"try/except is for error handling."),
+          Q("What usually makes code easier to maintain?", ["one giant function","clear small functions","no variable names","removing indentation"],1,"Small, clear functions are easier to understand and reuse.")
+        ],
+        code:C("Create a function level_up(player) where player is a dictionary. Add 1 to player['level'] and return player. Then create hero = {'name':'Nova','level':1}, call level_up(hero), and print hero['level'].", "", "Use a dictionary parameter, update player['level'], return player, then call the function.", [
+          ["defines level_up(player)", c => /def\s+level_up\s*\(\s*player\s*\)\s*:/.test(c)],
+          ["updates player level", c => /player\s*\[\s*[\"']level[\"']\s*\]\s*(\+=\s*1|=\s*player\s*\[\s*[\"']level[\"']\s*\]\s*\+\s*1)/.test(c)],
+          ["returns player", c => /return\s+player/.test(c)],
+          ["creates hero dictionary", c => /hero\s*=\s*\{/.test(c)],
+          ["calls level_up(hero)", c => /level_up\s*\(\s*hero\s*\)/.test(c)],
+          ["prints hero level", c => /print\s*\(\s*hero\s*\[\s*[\"']level[\"']\s*\]\s*\)/.test(c)]
+        ], "2")
+      }
+    ];
+
+
+    // Harder boss battles: these replace the original review quizzes with code-tracing exams.
+    const hardBossSets = {
+      9: [
+        Q("What prints? x = 3; x = x + 2; print(x * 2)", ["6", "8", "10", "12"], 2, "x becomes 5, then 5 × 2 = 10."),
+        Q("name = 'Kai'; print(f'{name}:{len(name)}') prints...", ["Kai:2", "Kai:3", "name:3", "Kai len"], 1, "Kai has 3 characters."),
+        Q("Which condition accepts ages 13 through 17 inclusive?", ["age > 13 and age < 17", "age >= 13 and age <= 17", "age == 13 or 17", "13 < age > 17"], 1, "Inclusive endpoints need >= and <=."),
+        Q("x = '5'. Which safely converts x to a number?", ["str(x)", "int(x)", "number(x)", "x.int"], 1, "int('5') returns 5."),
+        Q("score = 50. Which condition includes 50 as a passing score?", ["score > 50", "score >= 50", "score == 51", "score < 50"], 1, ">= includes the boundary."),
+        Q("What is True and not False?", ["True", "False", "None", "Error"], 0, "not False is True, then True and True is True.")
+      ],
+      19: [
+        Q("total = 0; for i in range(1, 5): total += i. Final total?", ["6", "10", "15", "20"], 1, "range(1,5) gives 1,2,3,4."),
+        Q("nums=[2,4,6]; nums.append(8); print(nums[-2])", ["4", "6", "8", "Error"], 1, "-2 is the second item from the end."),
+        Q("How many values come from range(2, 10, 2)?", ["3", "4", "5", "8"], 1, "The values are 2,4,6,8."),
+        Q("word='python'; print(word[1:4])", ["pyt", "yth", "ytho", "tho"], 1, "Slicing starts at index 1 and stops before 4."),
+        Q("Which condition keeps only even numbers?", ["n % 2 == 0", "n / 2 == 0", "n == 2 or 4", "n % 2 == 1"], 0, "Even values have remainder 0 when divided by 2."),
+        Q("Which loop is guaranteed to move toward stopping?", ["while n > 0: n += 1", "while n > 0: n -= 1", "while True: pass", "while 1 == 1: print(n)"], 1, "n decreases toward zero."),
+        Q("items=['a','b']; for x in items: print(x.upper()) produces...", ["a then b", "A then B", "AB on one line", "Error"], 1, "Each item is uppercased and printed separately.")
+      ],
+      29: [
+        Q("def f(x): return x*2 if x>3 else x+2. What is f(3)?", ["3", "5", "6", "8"], 1, "3 is not greater than 3, so the else expression gives 5."),
+        Q("d={'a':2}; d['b']=d['a']+3. What is d['b']?", ["2", "3", "5", "Error"], 2, "2 + 3 = 5."),
+        Q("nums=[1,2,3,4,5]. What is nums[1::2]?", ["[1,3,5]", "[2,4]", "[2,3,4]", "[1,2]"], 1, "Start at index 1 and step by 2."),
+        Q("Which catches only failed integer conversions?", ["except:", "except Error:", "except ValueError:", "except int:"], 2, "int() conversion failures raise ValueError."),
+        Q("for i in range(3): if i==1: continue; print(i) prints...", ["0,1,2", "0,2", "1", "2 only"], 1, "continue skips the print when i is 1."),
+        Q("Which expression is True for x = 7?", ["x < 5 and x > 10", "x % 2 == 0", "5 < x < 10", "not x > 3"], 2, "7 is between 5 and 10."),
+        Q("data={'hp':10,'mp':5}; sum(data.values()) is...", ["2", "10", "15", "Error"], 2, "The values are 10 and 5."),
+        Q("def double_all(xs): return [x*2 for x in xs]. double_all([1,3]) returns...", ["[1,3,1,3]", "[2,6]", "[3,9]", "Error"], 1, "The list comprehension doubles each item.")
+      ]
+    };
+    Object.entries(hardBossSets).forEach(([index, questions]) => { levels[Number(index)].quiz = questions; });
+
+    const STORAGE_KEY = "pyquest-progress-v1";
+    let progress = loadProgress();
+    let currentLevel = 0;
+    let currentStage = 0;
+    let quizPassed = false;
+    let codePassed = false;
+    let lessonSeen = false;
+    let bossBattleState = null;
+
+    function defaultProgress() {
+      return { completed: [], xp: 0, drafts: {}, unlocked: 1, lastActive: "", dailyDone: false };
+    }
+    function loadProgress() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return defaultProgress();
+        return { ...defaultProgress(), ...JSON.parse(raw) };
+      } catch { return defaultProgress(); }
+    }
+    function saveProgress() { localStorage.setItem(STORAGE_KEY, JSON.stringify(progress)); }
+    function isComplete(i) { return progress.completed.includes(i); }
+    function isUnlocked(i) { return i === 0 || i < progress.unlocked; }
+
+    const levelGrid = document.getElementById("levelGrid");
+    const modal = document.getElementById("levelModal");
+    const stageBody = document.getElementById("stageBody");
+    const footerButtons = document.getElementById("footerButtons");
+    const stageStatus = document.getElementById("stageStatus");
+    const modalCard = document.getElementById("modalCard");
+    const toastEl = document.getElementById("toast");
+
+    const WORLDS = [
+      { id:"iron", name:"Iron Castle", chapter:1, range:"Levels 1–10", tagline:"Climb the rune-lit fortress and reach the throne forge.", accent:"#67e8f9", boss:"Ironclad Golem", concepts:["Printing & strings","Variables & input","Comparisons & decisions"] },
+      { id:"volcano", name:"Ember Volcano", chapter:2, range:"Levels 11–20", tagline:"Cross magma bridges and code through the crater citadel.", accent:"#fb923c", boss:"Chromaflare Dragon", concepts:["Boolean logic","Loops & range","Strings, lists & nested decisions"] },
+      { id:"prism", name:"Prism Citadel", chapter:3, range:"Levels 21–30", tagline:"Ascend crystal skyways toward the final Python trial.", accent:"#e879f9", boss:"Prism Hydra", concepts:["Functions & return","Collections & scope","Exceptions & program reasoning"] }
+    ];
+    function worldForLevel(index) {
+      return index < 10 ? WORLDS[0] : index < 20 ? WORLDS[1] : WORLDS[2];
+    }
+
+    function renderMap() {
+      levelGrid.innerHTML = "";
+      levels.forEach((level, i) => {
+        const world = worldForLevel(i);
+        if (i % 10 === 0) {
+          const chapter = document.createElement("div");
+          chapter.className = `chapter-world world-${world.id}`;
+          chapter.innerHTML = `<div><small>Chapter ${world.chapter} • ${world.range}</small><h3>${escapeHTML(world.name)}</h3><p>${escapeHTML(world.tagline)} Boss: <b>${escapeHTML(world.boss)}</b></p></div><div class="world-route" aria-hidden="true">${Array.from({length:10},()=>'<i></i>').join("")}</div>`;
+          levelGrid.appendChild(chapter);
+        }
+        const card = document.createElement("article");
+        const locked = !isUnlocked(i);
+        const complete = isComplete(i);
+        card.className = `level-card world-${world.id} ${locked ? "locked" : ""} ${complete ? "complete" : ""} ${level.boss ? "boss" : ""} ${!complete && isUnlocked(i) && i === Math.min(progress.unlocked - 1, levels.length - 1) ? "current" : ""}`;
+        card.dataset.world = world.id;
+        card.setAttribute("role", "button");
+        card.setAttribute("aria-label", `${level.boss ? "Boss " : ""}Level ${i + 1}: ${level.title}${locked ? ", locked" : complete ? ", complete" : ", available"}`);
+        card.tabIndex = locked ? -1 : 0;
+        card.innerHTML = `
+          <div class="level-num">${level.boss ? "◆" : i + 1}</div>
+          <div class="level-state">${complete ? "✓" : locked ? "🔒" : ""}</div>
+          <h3>${escapeHTML(level.title)}</h3>
+          <p>${escapeHTML(level.topic)}</p>
+          <div class="level-cta">${complete ? "Replay" : locked ? "Locked" : level.boss ? "Fight boss" : "Start quest"}<span>→</span></div>
+          ${level.boss ? '<div class="boss-crown" aria-hidden="true">♛</div>' : ""}
+        `;
+        if (!locked) {
+          card.addEventListener("click", () => openLevel(i));
+          card.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openLevel(i); } });
+        }
+        levelGrid.appendChild(card);
+      });
+      updateStats();
+    }
+
+    function updateStats() {
+      const completed = progress.completed.length;
+      const bosses = progress.completed.filter(i => levels[i]?.boss).length;
+      let streak = 0;
+      while (progress.completed.includes(streak)) streak++;
+      document.getElementById("levelsDone").textContent = completed;
+      document.getElementById("bossesDone").textContent = bosses;
+      document.getElementById("streakCount").textContent = streak;
+      document.getElementById("xpMini").textContent = progress.xp;
+      document.getElementById("xpLabel").textContent = `${progress.xp} XP`;
+      document.getElementById("progressLabel").textContent = completed === levels.length ? "Course complete!" : `Level ${Math.min(progress.unlocked, levels.length)} unlocked`;
+      const mastery = Math.round((completed / levels.length) * 100);
+      document.getElementById("xpBar").style.width = `${mastery}%`;
+      const mp=document.getElementById("masteryPercent"), mb=document.getElementById("masteryBar"); if(mp)mp.textContent=`${mastery}%`;if(mb)mb.style.width=`${mastery}%`;
+      const today=new Date().toISOString().slice(0,10); const doneToday=progress.lastActive===today;
+      const dc=document.getElementById("dailyCount"); if(dc)dc.textContent=doneToday?"1/1":"0/1"; document.getElementById("dailyRing")?.classList.toggle("done",doneToday);
+      const achievements={first:completed>=1,boss:bosses>=1,ten:completed>=10,master:completed===levels.length};
+      document.querySelectorAll(".achievement").forEach(el=>el.classList.toggle("locked",!achievements[el.dataset.a]));
+      updateCompanion(completed, bosses);
+    }
+
+    function updateCompanion(completed, bosses) {
+      const evolution = Math.min(3, bosses);
+      const forms = [
+        { name:"Byte Hatchling", label:"Hatchling", cls:"evo-hatchling" },
+        { name:"Byte • Spark Serpent", label:"Spark Serpent", cls:"evo-spark" },
+        { name:"Byte • Arc Serpent", label:"Arc Serpent", cls:"evo-arc" },
+        { name:"Byte • Python Guardian Form", label:"Python Guardian Form", cls:"evo-guardian" }
+      ];
+      const form = forms[evolution];
+      const growth = Math.min(1.32, .82 + completed * .012 + evolution * .055);
+      const mascot = document.getElementById("questMascot");
+      if (mascot) {
+        mascot.style.setProperty("--growth", growth);
+        mascot.classList.remove("evo-hatchling","evo-spark","evo-arc","evo-guardian");
+        mascot.classList.add(form.cls);
+      }
+      const name = document.getElementById("companionName");
+      const badge = document.getElementById("companionTier");
+      if (name) name.textContent = form.name;
+      if (badge) badge.textContent = `${form.label} • ${completed}/30 quests`;
+    }
+
+    function openLevel(i) {
+      currentLevel = i;
+      currentStage = 0;
+      quizPassed = false;
+      codePassed = false;
+      lessonSeen = false;
+      bossBattleState = null;
+      const level = levels[i];
+      document.getElementById("modalSubtitle").textContent = level.boss ? `Boss • Level ${i + 1}` : `Level ${i + 1} • ${level.topic}`;
+      document.getElementById("modalTitle").textContent = level.title;
+      modal.classList.add("show");
+      document.body.style.overflow = "hidden";
+      renderStage();
+    }
+
+    function closeModal() {
+      modal.classList.remove("show");
+      document.body.style.overflow = "";
+    }
+
+    function renderStage() {
+      const level = levels[currentLevel];
+      document.querySelectorAll(".stage-tab").forEach((tab, idx) => {
+        tab.classList.toggle("active", idx === currentStage);
+        tab.classList.toggle("done", (idx === 0 && lessonSeen) || (idx === 1 && quizPassed) || (idx === 2 && codePassed));
+      });
+      stageStatus.textContent = `Stage ${currentStage + 1} of 3`;
+      footerButtons.innerHTML = "";
+      if (currentStage === 0) renderLesson(level);
+      if (currentStage === 1) renderQuiz(level);
+      if (currentStage === 2) renderCode(level);
+      stageBody.scrollTop = 0;
+    }
+
+    function renderLesson(level) {
+      stageBody.innerHTML = `
+        <div class="stage-inner">
+          <div class="section-kicker">${level.boss ? "Boss briefing" : "Learn"}</div>
+          <h3>${level.lessonTitle}</h3>
+          <div class="lesson-pages" role="group" aria-label="Two-part lesson"><div class="lesson-card lesson-page active" data-page="0"><p>${level.pages[0]}</p></div><div class="lesson-card lesson-page" data-page="1" hidden><p>${level.pages[1]}</p></div><div class="lesson-pager"><button class="ghost-btn lesson-prev" type="button" disabled>← Back</button><span class="lesson-dots"><i class="active"></i><i></i></span><button class="primary-btn lesson-next" type="button">Next →</button></div></div>
+          <div class="code-block">${escapeHTML(level.example)}</div>
+          <span class="mini-badge">⚡ Short lesson</span><span class="mini-badge">⌨️ Try the syntax next</span>
+        </div>`;
+      let lessonPage = 0;
+      const pages = [...stageBody.querySelectorAll(".lesson-page")], dots = [...stageBody.querySelectorAll(".lesson-dots i")];
+      const prevPage = stageBody.querySelector(".lesson-prev"), nextPage = stageBody.querySelector(".lesson-next");
+      const showLessonPage = n => { lessonPage=n; pages.forEach((el,i)=>{el.hidden=i!==n;el.classList.toggle("active",i===n)}); dots.forEach((d,i)=>d.classList.toggle("active",i===n)); prevPage.disabled=n===0; nextPage.textContent=n===pages.length-1?"Ready ✓":"Next →"; };
+      prevPage.addEventListener("click",()=>showLessonPage(Math.max(0,lessonPage-1)));
+      nextPage.addEventListener("click",()=>{ if(lessonPage<pages.length-1) showLessonPage(lessonPage+1); else toast("Lesson read — quiz unlocked!"); });
+      const next = button("Continue to Quiz →", "primary-btn", () => { lessonSeen = true; currentStage = 1; renderStage(); });
+      footerButtons.appendChild(next);
+    }
+
+    function renderQuiz(level) {
+      if (level.boss) { renderBossBattle(level); return; }
+      const questions = Array.isArray(level.quiz) ? level.quiz : [level.quiz];
+      let selections = Array(questions.length).fill(null);
+      let submitted = false;
+      stageBody.innerHTML = `
+        <div class="stage-inner">
+          <div class="section-kicker">${level.boss ? "Boss quiz" : "Quick check"}</div>
+          <h3>${level.boss ? "Prove your knowledge" : "One question. No stress."}</h3>
+          <div class="boss-questions" id="questionMount"></div>
+          <div class="feedback" id="quizFeedback"></div>
+        </div>`;
+      const mount = document.getElementById("questionMount");
+      questions.forEach((q, qi) => {
+        const wrap = document.createElement("div");
+        wrap.className = "boss-question";
+        wrap.innerHTML = `<p><b>${questions.length > 1 ? `${qi + 1}. ` : ""}${escapeHTML(q.question)}</b></p><div class="answer-list"></div>`;
+        const list = wrap.querySelector(".answer-list");
+        q.options.forEach((opt, oi) => {
+          const btn = document.createElement("button");
+          btn.className = "answer-btn";
+          btn.textContent = opt;
+          btn.addEventListener("click", () => {
             if (submitted) return;
             selections[qi] = oi;
             [...list.children].forEach((b, index) => b.classList.toggle("selected", index === oi));
