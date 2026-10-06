@@ -749,7 +749,10 @@
       .hero-preview-grid { grid-template-columns: 1fr 92px; }
       .quest-mascot { --display-scale: calc(var(--growth) * .78); transform-origin: right center; }
     }
-  </style>
+  
+/* Byte 2.0 + cinematic boss attacks */
+.quest-mascot{filter:drop-shadow(0 18px 30px rgba(34,211,238,.24))}.quest-mascot .snake-body{border-width:12px;background:linear-gradient(#0b1224,#0b1224) padding-box,linear-gradient(135deg,#22d3ee,#6366f1 45%,#a855f7 72%,#34d399) border-box;box-shadow:inset 0 0 18px #ffffff14,0 0 28px #22d3ee2e}.battle-snake{width:150px;height:122px}.battle-snake .bs-coil{left:13px;bottom:7px;width:103px;height:72px;border-width:17px;border-color:#6366f1;border-top-color:#22d3ee;border-right-color:#8b5cf6;box-shadow:0 0 22px #6366f138}.battle-snake .bs-neck{right:33px;top:29px;width:23px;height:60px;background:linear-gradient(#22d3ee,#6366f1 48%,#8b5cf6)}.battle-snake .bs-head{right:0;top:8px;width:68px;height:49px;background:linear-gradient(145deg,#a5f3fc,#22d3ee 30%,#6366f1 68%,#8b5cf6);border:2px solid #ffffff80;box-shadow:inset 7px 7px 12px #ffffff1f,0 0 20px #22d3ee4d}.battle-snake .bs-head:after{content:"";position:absolute;right:-13px;bottom:8px;width:20px;height:4px;background:linear-gradient(90deg,#f0abfc,#fb7185);clip-path:polygon(0 30%,70% 30%,100% 0,80% 50%,100% 100%,70% 70%,0 70%)}.battle-projectile{left:31%;top:43%;width:70px;height:10px;border-radius:999px;background:linear-gradient(90deg,transparent,#a5f3fc,#fff 48%,#22d3ee 65%,#8b5cf6);box-shadow:0 0 12px #fff,0 0 28px #22d3ee,0 0 48px #8b5cf6;transform:rotate(-7deg) scaleX(.15);transform-origin:left center}.battle-projectile.fly{animation:energyStrike .72s cubic-bezier(.12,.72,.18,1) forwards}.attack-trail{position:absolute;left:19%;top:18%;width:37%;height:66%;opacity:0;z-index:3;border-radius:50%;border:5px solid transparent;border-top-color:#67e8f9;border-right-color:#a78bfa;filter:drop-shadow(0 0 12px #22d3ee);transform:rotate(18deg) scale(.4)}.attack-trail.slash{animation:arcSlash .7s ease-out forwards}.impact-burst{position:absolute;right:18%;top:39%;width:22px;height:22px;opacity:0;z-index:6;border-radius:50%;background:#fff;box-shadow:0 0 18px #fff,0 0 42px #22d3ee,0 0 75px #a855f7}.impact-burst.boom{animation:impactBoom .62s ease-out forwards}.battle-snake.attack{animation:serpentStrike .72s cubic-bezier(.12,.78,.2,1)!important}.boss-avatar.hit{animation:bossImpact .55s ease-out!important}@keyframes serpentStrike{0%{transform:translate(0) rotate(-2deg)}22%{transform:translate(-18px,7px) rotate(-8deg) scale(.94)}52%{transform:translate(62px,-15px) rotate(8deg) scale(1.08)}100%{transform:translate(0)}}@keyframes energyStrike{0%{opacity:0;transform:translateX(0) rotate(-7deg) scaleX(.1)}18%{opacity:1}72%{opacity:1;transform:translateX(340px) rotate(-7deg) scaleX(2.1)}100%{opacity:0;transform:translateX(390px) rotate(-7deg) scaleX(.4)}}@keyframes arcSlash{0%{opacity:0;transform:rotate(-35deg) scale(.35)}25%{opacity:1}100%{opacity:0;transform:rotate(48deg) scale(1.35)}}@keyframes impactBoom{0%{opacity:0;transform:scale(.2)}22%{opacity:1;transform:scale(1.7)}100%{opacity:0;transform:scale(4.5)}}@keyframes bossImpact{0%{transform:translateX(0)}20%{transform:translateX(18px) rotate(5deg);filter:brightness(2.2)}42%{transform:translateX(-10px) rotate(-4deg)}100%{transform:translateX(0)}}.boss-victory{text-align:center;padding:28px}.victory-emblem{width:74px;height:74px;display:grid;place-items:center;margin:0 auto 14px;border-radius:50%;font-size:38px;font-weight:900;color:#052e2b;background:linear-gradient(135deg,#a7f3d0,#22d3ee);box-shadow:0 0 35px #34d39959}
+</style>
 </head>
 <body>
   <div class="app-shell">
@@ -1218,34 +1221,34 @@
     ];
 
 
-    // Harder boss battles: these replace the original review quizzes with code-tracing exams.
+    // Boss reviews only test skills taught before that boss.
     const hardBossSets = {
       9: [
-        Q("What prints? x = 3; x = x + 2; print(x * 2)", ["6", "8", "10", "12"], 2, "x becomes 5, then 5 × 2 = 10."),
-        Q("name = 'Kai'; print(f'{name}:{len(name)}') prints...", ["Kai:2", "Kai:3", "name:3", "Kai len"], 1, "Kai has 3 characters."),
-        Q("Which condition accepts ages 13 through 17 inclusive?", ["age > 13 and age < 17", "age >= 13 and age <= 17", "age == 13 or 17", "13 < age > 17"], 1, "Inclusive endpoints need >= and <=."),
-        Q("x = '5'. Which safely converts x to a number?", ["str(x)", "int(x)", "number(x)", "x.int"], 1, "int('5') returns 5."),
-        Q("score = 50. Which condition includes 50 as a passing score?", ["score > 50", "score >= 50", "score == 51", "score < 50"], 1, ">= includes the boundary."),
-        Q("What is True and not False?", ["True", "False", "None", "Error"], 0, "not False is True, then True and True is True.")
+        Q("What does print(\"Python\") do?",["stores text","shows Python on screen","asks for input","creates a loop"],1,"print() displays a value."),
+        Q("coins = 7; coins = coins + 3; print(coins) prints...",["7","3","10","73"],2,"coins becomes 10."),
+        Q("name = input(\"Name: \") stores the answer in...",["print","name","input","Name"],1,"The answer is stored in name."),
+        Q("score = 50. Which condition includes 50?",["score > 50","score >= 50","score < 50","score != 50"],1,">= includes the boundary."),
+        Q("What must end an if condition line?",[";",":",",","."],1,"Python if lines end with a colon."),
+        Q("If hp = 0, which branch runs in if hp > 0: ... else: ...?",["if","else","both","neither"],1,"The condition is False, so else runs.")
       ],
       19: [
-        Q("total = 0; for i in range(1, 5): total += i. Final total?", ["6", "10", "15", "20"], 1, "range(1,5) gives 1,2,3,4."),
-        Q("nums=[2,4,6]; nums.append(8); print(nums[-2])", ["4", "6", "8", "Error"], 1, "-2 is the second item from the end."),
-        Q("How many values come from range(2, 10, 2)?", ["3", "4", "5", "8"], 1, "The values are 2,4,6,8."),
-        Q("word='python'; print(word[1:4])", ["pyt", "yth", "ytho", "tho"], 1, "Slicing starts at index 1 and stops before 4."),
-        Q("Which condition keeps only even numbers?", ["n % 2 == 0", "n / 2 == 0", "n == 2 or 4", "n % 2 == 1"], 0, "Even values have remainder 0 when divided by 2."),
-        Q("Which loop is guaranteed to move toward stopping?", ["while n > 0: n += 1", "while n > 0: n -= 1", "while True: pass", "while 1 == 1: print(n)"], 1, "n decreases toward zero."),
-        Q("items=['a','b']; for x in items: print(x.upper()) produces...", ["a then b", "A then B", "AB on one line", "Error"], 1, "Each item is uppercased and printed separately.")
+        Q("Which repeats while a condition stays True?",["if","while","input","list"],1,"while repeats based on a condition."),
+        Q("What values does range(4) produce?",["1,2,3,4","0,1,2,3","0,1,2,3,4","4 only"],1,"range stops before the end number."),
+        Q("word = 'python'. What is word[0]?",["p","y","python","0"],0,"Indexing starts at 0."),
+        Q("name=' BYTE '. What does name.strip().lower() produce?",[" BYTE ","byte","BYTE","Error"],1,"strip removes outer spaces and lower makes lowercase."),
+        Q("items=['a','b']; items.append('c'). What is len(items)?",["2","3","4","Error"],1,"The list now has 3 items."),
+        Q("For nums=[2,4,6], what does for n in nums: visit?",["indexes only","2, then 4, then 6","only 6","nothing"],1,"A for loop visits each item."),
+        Q("What controls lines inside a nested if?",["brackets","indentation","commas","quotes"],1,"Indentation defines Python blocks.")
       ],
       29: [
-        Q("def f(x): return x*2 if x>3 else x+2. What is f(3)?", ["3", "5", "6", "8"], 1, "3 is not greater than 3, so the else expression gives 5."),
-        Q("d={'a':2}; d['b']=d['a']+3. What is d['b']?", ["2", "3", "5", "Error"], 2, "2 + 3 = 5."),
-        Q("nums=[1,2,3,4,5]. What is nums[1::2]?", ["[1,3,5]", "[2,4]", "[2,3,4]", "[1,2]"], 1, "Start at index 1 and step by 2."),
-        Q("Which catches only failed integer conversions?", ["except:", "except Error:", "except ValueError:", "except int:"], 2, "int() conversion failures raise ValueError."),
-        Q("for i in range(3): if i==1: continue; print(i) prints...", ["0,1,2", "0,2", "1", "2 only"], 1, "continue skips the print when i is 1."),
-        Q("Which expression is True for x = 7?", ["x < 5 and x > 10", "x % 2 == 0", "5 < x < 10", "not x > 3"], 2, "7 is between 5 and 10."),
-        Q("data={'hp':10,'mp':5}; sum(data.values()) is...", ["2", "10", "15", "Error"], 2, "The values are 10 and 5."),
-        Q("def double_all(xs): return [x*2 for x in xs]. double_all([1,3]) returns...", ["[1,3,1,3]", "[2,6]", "[3,9]", "Error"], 1, "The list comprehension doubles each item.")
+        Q("Which keyword creates a function?",["func","def","make","return"],1,"Python uses def."),
+        Q("What does return do?",["prints automatically","sends a value back","starts a loop","creates a list"],1,"return sends a result back."),
+        Q("In def greet(name):, name is...",["a parameter","a dictionary","a loop","an exception"],0,"name is a parameter."),
+        Q("A variable created inside a function is usually...",["local","a set","global forever","an error"],0,"It is normally local."),
+        Q("Which collection stores key-value pairs?",["list","tuple","dictionary","string"],2,"Dictionaries store key-value pairs."),
+        Q("Which dictionary method gives key and value pairs?",[".items()",".append()",".upper()",".strip()"],0,".items() provides pairs."),
+        Q("Which collection automatically keeps unique values?",["list","string","set","tuple"],2,"Sets keep unique values."),
+        Q("Why use try/except?",["to handle expected errors","to color code","to replace functions","to repeat forever"],0,"try/except handles errors safely.")
       ]
     };
     Object.entries(hardBossSets).forEach(([index, questions]) => { levels[Number(index)].quiz = questions; });
@@ -1495,6 +1498,14 @@
     function renderBossBattle(level) {
       const questions = Array.isArray(level.quiz) ? level.quiz : [level.quiz];
       const world = worldForLevel(currentLevel);
+      if (isComplete(currentLevel)) {
+        quizPassed = true;
+        stageBody.innerHTML = '<div class="stage-inner"><div class="battle-result boss-victory"><div class="victory-emblem">✓</div><div class="section-kicker">Boss already defeated</div><h3>' + escapeHTML(world.boss) + ' has fallen!</h3><p>Your victory is saved. There is no boss left to defeat here.</p></div></div>';
+        footerButtons.innerHTML = "";
+        footerButtons.appendChild(button("← Lesson","ghost-btn",()=>{currentStage=0;renderStage();}));
+        if(currentLevel<levels.length-1) footerButtons.appendChild(button("Next Level →","primary-btn",()=>{const next=currentLevel+1;closeModal();setTimeout(()=>openLevel(next),120);}));
+        return;
+      }
       const conceptsMastered = world.concepts || [];
       const damageNeeded = Math.max(1, questions.length - 1); // one mistake can be survived
       if (!bossBattleState) bossBattleState = { q: 0, hp: damageNeeded, maxHp: damageNeeded, hits: 0, locked: false };
@@ -1502,7 +1513,7 @@
       if (state.q >= questions.length) {
         const won = state.hp <= 0;
         quizPassed = won;
-        stageBody.innerHTML = `<div class="stage-inner"><div class="battle-result"><div class="section-kicker">${won ? "Boss staggered" : "Boss survived"}</div><h3>${won ? "HP depleted — prepare the coding finisher!" : `${state.hp} HP remains`}</h3><p>${won ? `You landed ${state.hits} correct-answer attacks. Finish the coding challenge to defeat ${escapeHTML(world.boss)}.` : `You landed ${state.hits}/${state.maxHp} needed attacks. Bosses are intentionally hard — retry and trace each line carefully.`}</p>${won ? `<div class="mastered-list">${conceptsMastered.map(c=>`<span>✓ ${escapeHTML(c)}</span>`).join("")}</div>` : ""}</div></div>`;
+        stageBody.innerHTML = `<div class="stage-inner"><div class="battle-result"><div class="section-kicker">${won ? "Boss staggered" : "Boss survived"}</div><h3>${won ? "Armor shattered — final strike ready!" : `${state.hp} HP remains`}</h3><p>${won ? `You landed ${state.hits} correct-answer attacks. Finish the coding challenge to defeat ${escapeHTML(world.boss)}.` : `You landed ${state.hits}/${state.maxHp} needed attacks. Bosses are intentionally hard — retry and trace each line carefully.`}</p>${won ? `<div class="mastered-list">${conceptsMastered.map(c=>`<span>✓ ${escapeHTML(c)}</span>`).join("")}</div>` : ""}</div></div>`;
         footerButtons.innerHTML = "";
         footerButtons.appendChild(button("← Lesson", "ghost-btn", () => { currentStage = 0; renderStage(); }));
         if (won) footerButtons.appendChild(button("Coding Finisher →", "primary-btn", () => { currentStage = 2; renderStage(); }));
@@ -1516,7 +1527,7 @@
         <div class="battle-arena battle-${world.id}">
           <div class="battle-fighter"><div class="battle-snake ${["evo-hatchling","evo-spark","evo-arc","evo-guardian"][Math.min(3,progress.completed.filter(i=>levels[i]?.boss).length)]}" id="battleSnake"><i class="bs-tail"></i><i class="bs-coil"></i><i class="bs-neck"></i><i class="bs-head"><b></b><b></b></i></div><div><b>${escapeHTML(document.getElementById("companionName")?.textContent || "Byte")}</b></div></div>
           <div class="battle-fighter"><div class="boss-avatar boss-${world.id}" id="bossAvatar">${bossMarkup(world)}</div><div><b>${escapeHTML(world.boss)}</b></div><div class="boss-hp"><i id="bossHpBar" style="width:${(state.hp/state.maxHp)*100}%"></i></div><small>${state.hp} HP</small></div>
-          <i class="battle-projectile" id="battleProjectile"></i>
+          <i class="battle-projectile" id="battleProjectile"></i><i class="attack-trail" id="attackTrail"></i><i class="impact-burst" id="impactBurst"></i>
         </div>
         <div class="battle-meta"><span>Question ${state.q + 1}/${questions.length}</span><span>${state.hits}/${state.maxHp} attacks landed</span></div>
         <div class="battle-question"><h3>${escapeHTML(q.question)}</h3><div class="answer-list" id="bossAnswers"></div><div class="feedback" id="bossFeedback"></div></div>
@@ -1567,11 +1578,12 @@
       const boss = document.getElementById("bossAvatar");
       const projectile = document.getElementById("battleProjectile");
       const hero = document.getElementById("questMascot");
-      snake?.classList.add("attack");
-      projectile?.classList.add("fly");
-      hero?.classList.add("celebrate");
-      setTimeout(() => boss?.classList.add("hit"), 260);
-      setTimeout(() => { snake?.classList.remove("attack"); boss?.classList.remove("hit"); projectile?.classList.remove("fly"); hero?.classList.remove("celebrate"); }, 700);
+      const arena = snake?.closest(".battle-arena");
+      const trail = document.getElementById("attackTrail");
+      const impact = document.getElementById("impactBurst");
+      arena?.classList.add("attack-mode"); snake?.classList.add("attack"); projectile?.classList.add("fly"); trail?.classList.add("slash"); hero?.classList.add("celebrate");
+      setTimeout(() => { boss?.classList.add("hit"); impact?.classList.add("boom"); }, 300);
+      setTimeout(() => { snake?.classList.remove("attack"); boss?.classList.remove("hit"); projectile?.classList.remove("fly"); trail?.classList.remove("slash"); impact?.classList.remove("boom"); arena?.classList.remove("attack-mode"); hero?.classList.remove("celebrate"); }, 1050);
     }
 
     function renderCode(level) {
